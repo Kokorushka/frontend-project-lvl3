@@ -4,3 +4,4 @@
 [![tests](https://github.com/Kokorushka/frontend-project-lvl3/actions/workflows/tests.yml/badge.svg)](https://github.com/Kokorushka/frontend-project-lvl3/actions/tests.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a5a9c8c8871bc2565000/maintainability)](https://codeclimate.com/github/Kokorushka/frontend-project-lvl3/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a5a9c8c8871bc2565000/test_coverage)](https://codeclimate.com/github/Kokorushka/frontend-project-lvl3/test_coverage)
+[![Deployed on Vercel](https://frontend-project-lvl3-inky.vercel.app/)]
