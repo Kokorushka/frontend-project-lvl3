@@ -13,19 +13,22 @@
         <form action class="rss-form">
           <div class="row">
             <div class="col">
-              <input type="text" class="form-control form-control-lg" id="text-field" placeholder="Ссылка rss"
-                aria-label="urlСсылка rss">
+              <input type="text" name="rssUrl" class="form-control form-control-lg" id="text-field" placeholder="Ссылка rss"
+                aria-label="url">
             </div>
             <div class="col-auto">
               <button type="submit" aria-label="add" class="btn btn-lg btn-primary px-sm-5">Add</button>
             </div>
           </div>
-          
-      </div>
-        </form>
-       
-    </div>
+        </div>
+      </form>
+    </div>    
   </div>
-  
+  <div class="container-fluid p-5">
+      <div class="row bg-light">
+        <div class="col-10" id="feeds"></div>
+        <div class="col-10" id="links"></div>
+      </div>
+    </div>
 </body>
 </html>
