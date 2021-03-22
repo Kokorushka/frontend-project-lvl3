@@ -6,6 +6,7 @@ import _ from 'lodash';
 const getParsedXml = (response) => {
   const parser = new DOMParser();
   const result = parser.parseFromString(response.data.contents, "application/xml");
+  // const feedLink = result.querySelector('link');
   const title = result.querySelector('title').textContent;
   const items = result.querySelectorAll('item');
   const mappedItems = [...items].map((item) => {
@@ -13,14 +14,21 @@ const getParsedXml = (response) => {
     const title = item.querySelector('title').textContent;
     return [link, title];
   });
-  // console.log(mappedItems);
   return [title, mappedItems];
 };
 const schema = yup.string().matches(/(https?:\/\/)?([\w])+.([\w]){2,15}\/(rss?.)\/?([\w]+)?/);
 
+const appMessages = {
+  errors: {
+    network: 'Network Problems. Try again.',
+     wasAddedBefore: 'This feed was already added.',
+  },
+  success: 'Feed was added!',
+  loading: 'Posts are loading. Please wait.'
+};
+
 const getValidatedUrl = (url) => {
- const result = schema.isValid(url)
-  .then((res) => res);
+ const result = schema.isValidSync(url);
   return result;
 };
 
@@ -34,6 +42,7 @@ const app = () => {
   };
   const feedsContainer = document.getElementById('feeds');
   const linksContainer = document.getElementById('links');
+  const input = document.querySelector('input');
   const watchedState = onChange(state, (path, current, previos) => {
     if (path === 'inputForm.feeds') {
       if (previos.length === 0) {
@@ -89,6 +98,14 @@ const app = () => {
       });
       })
     }
+    if (path === 'inputForm.status'){
+      if (current === 'invalid') {
+        input.classList.add('is-invalid');
+      }
+       if (current === 'valid') {
+         input.classList.remove('is-invalid');
+       }
+    }
   });
 
   const form = document.querySelector('form');
@@ -96,8 +113,14 @@ const app = () => {
     e.preventDefault();
     const data = new FormData(form);
     const newFeed = data.get('rssUrl');
-    console.log(getValidatedUrl(newFeed));
-    watchedState.inputForm.feeds.push(newFeed);
+    if (getValidatedUrl(newFeed)) {
+      watchedState.inputForm.feeds.push(newFeed);
+      watchedState.inputForm.status = 'valid';
+    } else {
+      watchedState.inputForm.status = 'invalid';
+      // console.log(watchedState);
+    }
+    
   })
 };
 
