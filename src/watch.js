@@ -24,12 +24,12 @@ const renderFeeds = (current, previous) => {
     liFeed.textContent = title;
     listOfFeeds.appendChild(liFeed);
   });
-}
+};
 
 const renderPosts = (current, previous) => {
   if (previous.length === 0) {
     const titlePosts = document.createElement('h2');
-    titlePosts.textContent = i18n.t('posts');;
+    titlePosts.textContent = i18n.t('posts');
     linksContainer.appendChild(titlePosts);
     const liOfPosts = document.createElement('ul');
     linksContainer.appendChild(liOfPosts);
@@ -47,7 +47,7 @@ const renderPosts = (current, previous) => {
       postLink.textContent = title;
       post.appendChild(postLink);
       const button = document.createElement('button');
-      button.classList.add('btn', 'btn-primary', 'ml-5')
+      button.classList.add('btn', 'btn-primary', 'ml-5');
       button.setAttribute('type', 'button');
       button.textContent = i18n.t('buttons');
       // const buttonLink = document.createElement('a');
@@ -55,12 +55,9 @@ const renderPosts = (current, previous) => {
       // button.appendChild(buttonLink);
       post.appendChild(button);
       liOfPosts.appendChild(post);
-  })
-  })
-}
-
-
-
+    });
+  });
+};
 
 const watch = (state) => {
   const watchedState = onChange(state, (path, current, previous) => {
@@ -69,7 +66,6 @@ const watch = (state) => {
       p.textContent = '';
       p.textContent = current;
       input.after(p);
-      
     }
 
     if (path === 'titles') {
@@ -81,13 +77,13 @@ const watch = (state) => {
     if (path === 'inputForm.status') {
       if (current === 'invalid') {
         input.classList.add('is-invalid');
-        form.querySelector('p').classList.remove('text-success')
-        form.querySelector('p').classList.add('text-danger')
+        form.querySelector('p').classList.remove('text-success');
+        form.querySelector('p').classList.add('text-danger');
       }
       if (current === 'valid') {
         input.classList.remove('is-invalid');
-        form.querySelector('p').classList.add('text-success')
-        form.querySelector('p').classList.remove('text-danger')
+        form.querySelector('p').classList.add('text-success');
+        form.querySelector('p').classList.remove('text-danger');
       }
     }
   });
