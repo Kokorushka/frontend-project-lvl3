@@ -7,7 +7,7 @@ import fs from 'fs';
 import path from 'path';
 import app from '../src/app.js';
 
-const { screen } = testingLibraryDom;
+const { screen, waitFor } = testingLibraryDom;
 const userEvent = testingLibraryUserEvent.default;
 
 beforeEach(() => {
@@ -16,10 +16,12 @@ beforeEach(() => {
   app();
 });
 
-test('first DOM test', () => {
+test('first DOM test', async () => {
   const rss1 = 'http://lorem-rss.herokuapp.com/feed';
   userEvent.type(screen.getByLabelText('url'), rss1);
   expect(screen.getByLabelText('url')).toHaveDisplayValue(rss1);
-  userEvent.click(screen.getByRole('button', { name: /add/i }));
-  expect(screen.getByLabelText('url')).toHaveDisplayValue('');
+  userEvent.click(screen.getByLabelText(/add/));
+  await waitFor(() => {
+    expect(screen.getByLabelText('url')).toHaveDisplayValue('');
+  });
 });

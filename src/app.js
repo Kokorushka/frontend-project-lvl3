@@ -5,32 +5,42 @@ import watch from './watch.js';
 import { getParsedXml, getValidatedUrl } from '../utils';
 import ru from './locales/ru.js';
 
-// const getValidatedUrl = (url, watchedState) => {
-//   yup.setLocale({
-//     string: {
-//       matches: `${i18n.t('errors.incorrect')}`,
-//     },
-//   });
-//   const schema = yup.string()
-//     .matches(/(https?:\/\/)?([\w])+.([\w]){2,15}\/(rss?.)\/?([\w]+)?/)
-//     .notOneOf(watchedState.inputForm.urls, `${i18n.t('errors.wasAddedBefore')}`);
-
-//   // const result = schema.isValidSync(url);
-//   // return result;
-
-//   // const validate = (fields) => {
-//   try {
-//     schema.validateSync(url, {
-//       abortEarly: false,
-//     });
-//     return {};
-//   } catch (e) {
-//     // console.log(e);
-//     // return _.keyBy(e.inner, 'path');
-//     return e.errors;
-//   }
-//   // };
-// };
+const addIdtoPosts = (posts, urlId) => {
+  const indexedPosts = posts.map((item) => {
+    const postId = _.uniqueId();
+    const newItem = {
+      ...item,
+      urlId,
+      postId,
+    };
+    return newItem;
+  });
+  return indexedPosts;
+};
+const updatePosts = (state, proxy, delay = 5000) => {
+  let timerId = setTimeout(function request() {
+    // console.log(state.inputForm.urls);
+    state.inputForm.urls.forEach(({ url, urlId }) => {
+      try {
+        axios.get(`${proxy}${encodeURIComponent(url)}`)
+          .then((resp) => {
+            const { posts } = getParsedXml(resp);
+            // const oldPosts = state.posts;
+            // console.log(oldPosts);
+            const titleList = state.posts.map(({ title }) => title);
+            const newPosts = posts.filter(({ title }) => !_.includes(titleList, title));
+            const preparedPosts = addIdtoPosts(newPosts, urlId);
+            // console.log(preparedPosts);
+            state.posts = [...preparedPosts, ...state.posts];
+            // console.log(state.posts);
+          });
+      } catch (error) {
+        state.errors = i18n.t('errors.couldnotUpdate');
+      }
+    });
+    timerId = setTimeout(request, delay);
+  }, delay);
+};
 
 const app = () => {
   i18n.init({
@@ -44,15 +54,36 @@ const app = () => {
   const state = {
     inputForm: {
       status: 'valid',
-      feeds: [],
       urls: [],
+    },
+    modal: {
+      open: null,
+      postId: [],
     },
     titles: [],
     posts: [],
     errors: '',
   };
 
+  const proxy = 'https://hexlet-allorigins.herokuapp.com/get?url=';
   const watchedState = watch(state);
+  // const buttonsClosingModal = document.querySelectorAll('[data-bs-dismiss="modal"]');
+  // buttonsClosingModal.forEach((button) => {
+  //   button.addEventListener('click', () => {
+  //     watchedState.modal.open = false;
+  //   });
+  // });
+  // const buttonsOpeningModal = document.querySelectorAll('[data-bs-toggle="modal"]');
+  // console.log(buttonsOpeningModal);
+  // buttonsOpeningModal.forEach((button) => {
+  //   button.addEventListener('click', () => {
+  //     watchedState.modal.open = true;
+  //     const buttonId = button.dataset.bsTarget;
+  //     console.log(buttonId);
+  //     console.log(watchedState);
+  //     // watchedState.modal.posttId.push();
+  //   })
+  // })
   const form = document.querySelector('form');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -60,19 +91,22 @@ const app = () => {
     const data = new FormData(form);
     const newFeed = data.get('rssUrl');
     form.reset();
-    const errors = getValidatedUrl(newFeed, watchedState);
+    const { urls } = watchedState.inputForm;
+    const preparedUrl = urls.map(({ url }) => url);
+    const errors = getValidatedUrl(newFeed, preparedUrl);
     if (_.isEmpty(errors)) {
-      watchedState.inputForm.urls.push(newFeed);
+      const urlId = _.uniqueId();
+      watchedState.inputForm.urls = [...watchedState.inputForm.urls, { url: newFeed, urlId }];
+      console.log(watchedState.inputForm.urls);
       try {
-        axios.get(`https://hexlet-allorigins.herokuapp.com/get?url=${encodeURIComponent(newFeed)}`)
+        axios.get(`${proxy}${encodeURIComponent(newFeed)}`)
           .then((resp) => {
-            const [title, items] = getParsedXml(resp);
-            const feedId = _.uniqueId();
-            watchedState.titles.push([title, feedId]);
-            watchedState.posts.push([items, feedId]);
+            const { feedTitle, feedDescription, posts } = getParsedXml(resp);
+            watchedState.titles.push([{ feedTitle, feedDescription, urlId }]);
+            const indexedPosts = addIdtoPosts(posts, urlId);
+            watchedState.posts = [...watchedState.posts, ...indexedPosts];
             watchedState.errors = i18n.t('success');
             watchedState.inputForm.status = 'valid';
-            console.log(watchedState);
           });
       } catch (error) {
         watchedState.errors = i18n.t('errors.network');
@@ -82,6 +116,8 @@ const app = () => {
       watchedState.errors = errors;
     }
   });
+  updatePosts(watchedState, proxy);
+  // console.log(watchedState.posts);
 };
 
 export default app;
