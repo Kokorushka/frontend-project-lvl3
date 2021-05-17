@@ -6,6 +6,7 @@ const feedsContainer = document.getElementById('feeds');
 const linksContainer = document.getElementById('links');
 const input = document.querySelector('input');
 const form = document.querySelector('form');
+const p = form.querySelector('p');
 
 const updateModal = (title, description, link, postId, state) => {
   const modal = document.querySelector('.modal');
@@ -118,7 +119,6 @@ const renderPosts = (current, previous, state) => {
 
 const watch = (state) => {
   const watchedState = onChange(state, function fn(path, current, previous) {
-    const p = form.querySelector('p');
     if (path === 'errors') {
       p.textContent = '';
       p.textContent = current;
@@ -144,7 +144,6 @@ const watch = (state) => {
       }
     }
     if (path === 'modal.postId') {
-      
       current.forEach((item) => {
         linksContainer.querySelector(`li[id="${item}"] a`).classList.remove('font-weight-bold');
         linksContainer.querySelector(`li[id="${item}"] a`).classList.add('font-weight-normal');

@@ -18,27 +18,22 @@ const addIdtoPosts = (posts, urlId) => {
   return indexedPosts;
 };
 const updatePosts = (state, proxy, delay = 5000) => {
-  let timerId = setTimeout(function request() {
-    // console.log(state.inputForm.urls);
+  setTimeout(function request() {
     state.inputForm.urls.forEach(({ url, urlId }) => {
       try {
         axios.get(`${proxy}${encodeURIComponent(url)}`)
           .then((resp) => {
             const { posts } = getParsedXml(resp);
-            // const oldPosts = state.posts;
-            // console.log(oldPosts);
             const titleList = state.posts.map(({ title }) => title);
             const newPosts = posts.filter(({ title }) => !_.includes(titleList, title));
             const preparedPosts = addIdtoPosts(newPosts, urlId);
-            // console.log(preparedPosts);
             state.posts = [...preparedPosts, ...state.posts];
-            // console.log(state.posts);
           });
       } catch (error) {
         state.errors = i18n.t('errors.couldnotUpdate');
       }
     });
-    timerId = setTimeout(request, delay);
+    setTimeout(request, delay);
   }, delay);
 };
 
@@ -67,23 +62,6 @@ const app = () => {
 
   const proxy = 'https://hexlet-allorigins.herokuapp.com/get?url=';
   const watchedState = watch(state);
-  // const buttonsClosingModal = document.querySelectorAll('[data-bs-dismiss="modal"]');
-  // buttonsClosingModal.forEach((button) => {
-  //   button.addEventListener('click', () => {
-  //     watchedState.modal.open = false;
-  //   });
-  // });
-  // const buttonsOpeningModal = document.querySelectorAll('[data-bs-toggle="modal"]');
-  // console.log(buttonsOpeningModal);
-  // buttonsOpeningModal.forEach((button) => {
-  //   button.addEventListener('click', () => {
-  //     watchedState.modal.open = true;
-  //     const buttonId = button.dataset.bsTarget;
-  //     console.log(buttonId);
-  //     console.log(watchedState);
-  //     // watchedState.modal.posttId.push();
-  //   })
-  // })
   const form = document.querySelector('form');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -97,7 +75,6 @@ const app = () => {
     if (_.isEmpty(errors)) {
       const urlId = _.uniqueId();
       watchedState.inputForm.urls = [...watchedState.inputForm.urls, { url: newFeed, urlId }];
-      console.log(watchedState.inputForm.urls);
       try {
         axios.get(`${proxy}${encodeURIComponent(newFeed)}`)
           .then((resp) => {
@@ -117,7 +94,6 @@ const app = () => {
     }
   });
   updatePosts(watchedState, proxy);
-  // console.log(watchedState.posts);
 };
 
 export default app;

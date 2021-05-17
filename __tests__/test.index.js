@@ -1,27 +1,42 @@
 import '@testing-library/jest-dom';
-import testingLibraryDom from '@testing-library/dom';
-import testingLibraryUserEvent from '@testing-library/user-event';
+import { screen } from '@testing-library/dom';
+import userEvent from '@testing-library/user-event';
 import { test, expect, describe } from '@jest/globals';
+import nock from 'nock';
 import axios from 'axios';
 import fs from 'fs';
 import path from 'path';
 import app from '../src/app.js';
 
-const { screen, waitFor } = testingLibraryDom;
-const userEvent = testingLibraryUserEvent.default;
-
-beforeEach(() => {
-  const initHTML = fs.readFileSync(path.join('__fixtures__', 'index.html')).toString();
-  document.body.innerHTML = initHTML;
-  app();
+const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+const getContent = (filepath) => fs.readFileSync(getFixturePath(filepath), 'utf-8');
+const rss1 = getContent('rss1.xml');
+const rssUrl1 = 'http://lorem-rss.herokuapp.com/feed';
+const proxy = 'https://hexlet-allorigins.herokuapp.com';
+const proxyApi = '/get';
+const pathToHtml = path.join(__dirname, '../template.html');
+const html = fs.readFileSync(pathToHtml, 'utf8');
+beforeAll(() => {
+  nock.disableNetConnect();
 });
 
-test('first DOM test', async () => {
-  const rss1 = 'http://lorem-rss.herokuapp.com/feed';
-  userEvent.type(screen.getByLabelText('url'), rss1);
-  expect(screen.getByLabelText('url')).toHaveDisplayValue(rss1);
-  userEvent.click(screen.getByLabelText(/add/));
-  await waitFor(() => {
-    expect(screen.getByLabelText('url')).toHaveDisplayValue('');
-  });
+afterAll(() => {
+  nock.cleanAll();
+  nock.enableNetConnect();
+});
+beforeEach(async () => {
+  document.body.innerHTML = html;
+  await app();
+});
+
+test('add rss url', async () => {
+  const scope = nock(proxy)
+    .get(proxyApi)
+    .query({ url: rssUrl1, disableCache: true })
+    .reply(200, { contents: rss1 });
+  userEvent.type(screen.getByRole('textbox', { name: 'url' }), rssUrl1);
+  userEvent.click(screen.getByRole('button', { name: 'add' }));
+
+  expect(await screen.findByText(/RSS успешно загружен/i)).toBeInTheDocument();
+  scope.done();
 });
