@@ -2,12 +2,6 @@ import onChange from 'on-change';
 import i18n from 'i18next';
 import _ from 'lodash';
 
-const feedsContainer = document.getElementById('feeds');
-const linksContainer = document.getElementById('links');
-const input = document.querySelector('input');
-const form = document.querySelector('form');
-const p = form.querySelector('p');
-
 const updateModal = (title, description, link, postId, state) => {
   const modal = document.querySelector('.modal');
   modal.id = postId;
@@ -48,6 +42,7 @@ buttonsClosingModal.forEach((button) => {
 });
 
 const renderFeeds = (current, previous) => {
+  const feedsContainer = document.getElementById('feeds');
   if (previous.length === 0) {
     const titleFeeds = document.createElement('h2');
     titleFeeds.textContent = i18n.t('feeds');
@@ -73,6 +68,7 @@ const renderFeeds = (current, previous) => {
 };
 
 const renderPosts = (current, previous, state) => {
+  const linksContainer = document.getElementById('links');
   if (previous.length === 0) {
     const titlePosts = document.createElement('h2');
     titlePosts.textContent = i18n.t('posts');
@@ -118,8 +114,11 @@ const renderPosts = (current, previous, state) => {
 };
 
 const watch = (state) => {
+  const input = document.querySelector('input');
+  const form = document.querySelector('form');
   const watchedState = onChange(state, function fn(path, current, previous) {
     if (path === 'errors') {
+      const p = form.querySelector('p');
       p.textContent = '';
       p.textContent = current;
       input.after(p);
@@ -132,6 +131,7 @@ const watch = (state) => {
       renderPosts(current, previous, this);
     }
     if (path === 'inputForm.status') {
+      const p = form.querySelector('p');
       if (current === 'invalid') {
         input.classList.add('is-invalid');
         p.classList.remove('text-success');
@@ -144,6 +144,7 @@ const watch = (state) => {
       }
     }
     if (path === 'modal.postId') {
+      const linksContainer = document.getElementById('links');
       current.forEach((item) => {
         linksContainer.querySelector(`li[id="${item}"] a`).classList.remove('font-weight-bold');
         linksContainer.querySelector(`li[id="${item}"] a`).classList.add('font-weight-normal');

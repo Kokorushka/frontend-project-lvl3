@@ -20,18 +20,20 @@ const addIdtoPosts = (posts, urlId) => {
 const updatePosts = (state, proxy, delay = 5000) => {
   setTimeout(function request() {
     state.inputForm.urls.forEach(({ url, urlId }) => {
-      try {
-        axios.get(`${proxy}${encodeURIComponent(url)}`)
-          .then((resp) => {
-            const { posts } = getParsedXml(resp);
-            const titleList = state.posts.map(({ title }) => title);
-            const newPosts = posts.filter(({ title }) => !_.includes(titleList, title));
-            const preparedPosts = addIdtoPosts(newPosts, urlId);
-            state.posts = [...preparedPosts, ...state.posts];
-          });
-      } catch (error) {
-        state.errors = i18n.t('errors.couldnotUpdate');
-      }
+      // try {
+      axios.get(`${proxy}${encodeURIComponent(url)}`)
+        .then((resp) => {
+          const { posts } = getParsedXml(resp);
+          const titleList = state.posts.map(({ title }) => title);
+          const newPosts = posts.filter(({ title }) => !_.includes(titleList, title));
+          const preparedPosts = addIdtoPosts(newPosts, urlId);
+          state.posts = [...preparedPosts, ...state.posts];
+        })
+      // }
+        .catch((error) => {
+          state.errors = i18n.t('errors.couldnotUpdate');
+          throw error;
+        });
     });
     setTimeout(request, delay);
   }, delay);
@@ -75,19 +77,24 @@ const app = () => {
     if (_.isEmpty(errors)) {
       const urlId = _.uniqueId();
       watchedState.inputForm.urls = [...watchedState.inputForm.urls, { url: newFeed, urlId }];
-      try {
-        axios.get(`${proxy}${encodeURIComponent(newFeed)}`)
-          .then((resp) => {
-            const { feedTitle, feedDescription, posts } = getParsedXml(resp);
-            watchedState.titles.push([{ feedTitle, feedDescription, urlId }]);
-            const indexedPosts = addIdtoPosts(posts, urlId);
-            watchedState.posts = [...watchedState.posts, ...indexedPosts];
-            watchedState.errors = i18n.t('success');
-            watchedState.inputForm.status = 'valid';
-          });
-      } catch (error) {
-        watchedState.errors = i18n.t('errors.network');
-      }
+      // form.reset();
+      // try {
+      axios.get(`${proxy}${encodeURIComponent(newFeed)}`)
+        .then((resp) => {
+          const { feedTitle, feedDescription, posts } = getParsedXml(resp);
+          watchedState.titles.push([{ feedTitle, feedDescription, urlId }]);
+          const indexedPosts = addIdtoPosts(posts, urlId);
+          watchedState.posts = [...watchedState.posts, ...indexedPosts];
+          watchedState.errors = i18n.t('success');
+          watchedState.inputForm.status = 'valid';
+          // form.reset();
+        })
+      // }
+        .catch((er) => {
+          // console.log(er);
+          watchedState.errors = i18n.t('errors.network');
+          throw er;
+        });
     } else {
       watchedState.inputForm.status = 'invalid';
       watchedState.errors = errors;

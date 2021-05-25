@@ -3,8 +3,13 @@ import i18n from 'i18next';
 const getParsedXml = (response) => {
   const parser = new DOMParser();
   const result = parser.parseFromString(response.data.contents, 'application/xml');
-  if (!result.querySelector('rss')) {
-    throw new Error(`${i18n.t('errors.noValidRSS')}`);
+  const error = result.querySelector('parsererror');
+  if (error) {
+    const p = document.querySelector('form p');
+    p.textContent = '';
+    p.classList.add('text-danger');
+    p.textContent = `${i18n.t('errors.noValidRSS')}`;
+    throw error;
   }
   const feedTitle = result.querySelector('title').textContent;
   const feedDescription = result.querySelector('description').textContent;
