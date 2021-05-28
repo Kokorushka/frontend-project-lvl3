@@ -1,1 +1,1314 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Lorem ipsum feed for an interval of 1 minutes with 10 item(s)]]></title><description><![CDATA[This is a constantly updating lorem ipsum feed]]></description><link>http://example.com/</link><generator>RSS for Node</generator><lastBuildDate>Fri, 14 May 2021 15:46:23 GMT</lastBuildDate><pubDate>Fri, 14 May 2021 15:46:00 GMT</pubDate><copyright><![CDATA[Michael Bertolacci, licensed under a Creative Commons Attribution 3.0 Unported License.]]></copyright><ttl>1</ttl><item><title><![CDATA[Lorem ipsum 2021-05-14T15:46:00Z]]></title><description><![CDATA[Aute esse consectetur sunt anim Lorem occaecat magna proident culpa voluptate voluptate.]]></description><link>http://example.com/test/1621007160</link><guid isPermaLink="true">http://example.com/test/1621007160</guid><dc:creator><![CDATA[John Smith]]></dc:creator><pubDate>Fri, 14 May 2021 15:46:00 GMT</pubDate></item><item><title><![CDATA[Lorem ipsum 2021-05-14T15:45:00Z]]></title><description><![CDATA[Non incididunt tempor ullamco et.]]></description><link>http://example.com/test/1621007100</link><guid isPermaLink="true">http://example.com/test/1621007100</guid><dc:creator><![CDATA[John Smith]]></dc:creator><pubDate>Fri, 14 May 2021 15:45:00 GMT</pubDate></item><item><title><![CDATA[Lorem ipsum 2021-05-14T15:44:00Z]]></title><description><![CDATA[Velit ex excepteur duis incididunt minim voluptate cillum incididunt fugiat culpa id eiusmod minim.]]></description><link>http://example.com/test/1621007040</link><guid isPermaLink="true">http://example.com/test/1621007040</guid><dc:creator><![CDATA[John Smith]]></dc:creator><pubDate>Fri, 14 May 2021 15:44:00 GMT</pubDate></item><item><title><![CDATA[Lorem ipsum 2021-05-14T15:43:00Z]]></title><description><![CDATA[Qui eu aliqua aliquip fugiat adipisicing aliqua occaecat laboris nulla minim minim duis consectetur.]]></description><link>http://example.com/test/1621006980</link><guid isPermaLink="true">http://example.com/test/1621006980</guid><dc:creator><![CDATA[John Smith]]></dc:creator><pubDate>Fri, 14 May 2021 15:43:00 GMT</pubDate></item><item><title><![CDATA[Lorem ipsum 2021-05-14T15:42:00Z]]></title><description><![CDATA[Eiusmod ea tempor eu ipsum ad irure nisi sunt.]]></description><link>http://example.com/test/1621006920</link><guid isPermaLink="true">http://example.com/test/1621006920</guid><dc:creator><![CDATA[John Smith]]></dc:creator><pubDate>Fri, 14 May 2021 15:42:00 GMT</pubDate></item><item><title><![CDATA[Lorem ipsum 2021-05-14T15:41:00Z]]></title><description><![CDATA[Esse in nisi minim ea.]]></description><link>http://example.com/test/1621006860</link><guid isPermaLink="true">http://example.com/test/1621006860</guid><dc:creator><![CDATA[John Smith]]></dc:creator><pubDate>Fri, 14 May 2021 15:41:00 GMT</pubDate></item><item><title><![CDATA[Lorem ipsum 2021-05-14T15:40:00Z]]></title><description><![CDATA[Laboris labore duis pariatur anim mollit quis reprehenderit adipisicing eu amet commodo eiusmod.]]></description><link>http://example.com/test/1621006800</link><guid isPermaLink="true">http://example.com/test/1621006800</guid><dc:creator><![CDATA[John Smith]]></dc:creator><pubDate>Fri, 14 May 2021 15:40:00 GMT</pubDate></item><item><title><![CDATA[Lorem ipsum 2021-05-14T15:39:00Z]]></title><description><![CDATA[Sint amet nulla nisi sit non et consequat.]]></description><link>http://example.com/test/1621006740</link><guid isPermaLink="true">http://example.com/test/1621006740</guid><dc:creator><![CDATA[John Smith]]></dc:creator><pubDate>Fri, 14 May 2021 15:39:00 GMT</pubDate></item><item><title><![CDATA[Lorem ipsum 2021-05-14T15:38:00Z]]></title><description><![CDATA[Reprehenderit eu ullamco sit ea.]]></description><link>http://example.com/test/1621006680</link><guid isPermaLink="true">http://example.com/test/1621006680</guid><dc:creator><![CDATA[John Smith]]></dc:creator><pubDate>Fri, 14 May 2021 15:38:00 GMT</pubDate></item><item><title><![CDATA[Lorem ipsum 2021-05-14T15:37:00Z]]></title><description><![CDATA[Fugiat eu sint mollit ea reprehenderit commodo amet sit culpa cillum.]]></description><link>http://example.com/test/1621006620</link><guid isPermaLink="true">http://example.com/test/1621006620</guid><dc:creator><![CDATA[John Smith]]></dc:creator><pubDate>Fri, 14 May 2021 15:37:00 GMT</pubDate></item></channel></rss>
+
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" version="2.0">
+<channel>
+<title>N+1: научные статьи, новости, открытия</title>
+<description/>
+<link>https://nplus1.ru</link>
+<language>ru</language>
+<image>
+<url>https://nplus1.ru/i/logo.png</url>
+<title>N+1: научные статьи, новости, открытия</title>
+<link>https://nplus1.ru</link>
+</image>
+<item>
+<title>
+<![CDATA[ Нарциссизм оказался значительным фактором риска агрессивного и насильственного поведения ]]>
+</title>
+<description>
+<![CDATA[ Метаанализ показал, что нарциссическое расстройства является фактором агрессивного поведения ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/27/fdad2ae51835439bd8185f7ee0eda188.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/28/narcissism-linked-to-aggression</guid>
+<link>https://nplus1.ru/news/2021/05/28/narcissism-linked-to-aggression</link>
+<dc:creator>Рузана Анчек</dc:creator>
+<pubDate>Fri, 28 May 2021 11:39:53 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Уже не те ]]>
+</title>
+<description>
+<![CDATA[ Почему помидоры потеряли вкус и как его вернуть ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/27/d4892690dc29b2999093120711435ae3.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/material/2021/05/28/tomato-problem</guid>
+<link>https://nplus1.ru/material/2021/05/28/tomato-problem</link>
+<dc:creator> </dc:creator>
+<pubDate>Fri, 28 May 2021 11:19:55 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Вакцина от Pfizer показала стопроцентную эффективность у подростков ]]>
+</title>
+<description>
+<![CDATA[ Серьезных побочных эффектов не зарегистрировали ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/27/9eb9b7cc3434663053c9124f86ff62f2.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/28/pfizer-efficiency</guid>
+<link>https://nplus1.ru/news/2021/05/28/pfizer-efficiency</link>
+<dc:creator>Анастасия Кузнецова</dc:creator>
+<pubDate>Fri, 28 May 2021 00:44:08 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Две коронавирусные вакцины от Sinopharm оказались эффективны на 73 и 78 процентов ]]>
+</title>
+<description>
+<![CDATA[ Это первые инактивированные вакцины, разработчики которых отчитались о третьей фазе испытаний ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/27/67b4fb6c1c3b1a251eb39d08bfa209c0.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/27/sinopharm-3-phase</guid>
+<link>https://nplus1.ru/news/2021/05/27/sinopharm-3-phase</link>
+<dc:creator>Полина Лосева</dc:creator>
+<pubDate>Thu, 27 May 2021 20:19:37 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Найденный 40 лет назад в Галилее византийский амулет передали археологам ]]>
+</title>
+<description>
+<![CDATA[ Сакральная подвеска защищала жителей Леванта от сглаза и демонов ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/27/21f466ca1d5fe46863fb3787894b338a.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/27/arbel-amulet</guid>
+<link>https://nplus1.ru/news/2021/05/27/arbel-amulet</link>
+<dc:creator>Елена Синицкая</dc:creator>
+<pubDate>Thu, 27 May 2021 19:00:10 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Исследователи стволовых клеток признали допустимыми эксперименты на эмбрионах человека после 14 дней ]]>
+</title>
+<description>
+<![CDATA[ Но согласовывать каждый такой эксперимент ученым придется отдельно ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/27/6021e62ab89daa7185c379d84de17219.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/27/14-days-and-ever</guid>
+<link>https://nplus1.ru/news/2021/05/27/14-days-and-ever</link>
+<dc:creator>Полина Лосева</dc:creator>
+<pubDate>Thu, 27 May 2021 18:40:32 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Хорьки унюхали птичий грипп в утином помете ]]>
+</title>
+<description>
+<![CDATA[ Точность такого подхода превысила 90 процентов. ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/26/66fe8f995051a113936ded7c8829dcbe.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/27/ferrets-mallard-feces</guid>
+<link>https://nplus1.ru/news/2021/05/27/ferrets-mallard-feces</link>
+<dc:creator>Сергей Коленов</dc:creator>
+<pubDate>Thu, 27 May 2021 18:18:18 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Могильник Джебель Сахаба возник из-за серии вооруженных конфликтов более 13 тысяч лет назад ]]>
+</title>
+<description>
+<![CDATA[ Повторное обследование современными методами позволило выявить множество новых травм на останках ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/26/3d4b805025bb465740db279f8ad48116.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/27/jebel-sahaba</guid>
+<link>https://nplus1.ru/news/2021/05/27/jebel-sahaba</link>
+<dc:creator>Михаил Подрезов</dc:creator>
+<pubDate>Thu, 27 May 2021 18:00:13 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Роботизированная микропипетка высосала из розмарина ценные вещества ]]>
+</title>
+<description>
+<![CDATA[ Нейросеть помогла роботизированной микропипетке высосать вещества, не повреждая растение целиком ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/27/d3f68fdf0278b9f6e912fc293bc8b138.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/27/gentle-extraction</guid>
+<link>https://nplus1.ru/news/2021/05/27/gentle-extraction</link>
+<dc:creator>Виктория Барановская</dc:creator>
+<pubDate>Thu, 27 May 2021 16:59:39 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Повышенный риск заболеваний сердца связали с большим числом братьев и сестер ]]>
+</title>
+<description>
+<![CDATA[ У первенцев риск развития кардиопатологий оказался наименьшим ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/27/f4153c5074b5d7cdf28bd51982663600.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/27/siblings-risk-death</guid>
+<link>https://nplus1.ru/news/2021/05/27/siblings-risk-death</link>
+<dc:creator>Анастасия Кузнецова</dc:creator>
+<pubDate>Thu, 27 May 2021 16:21:38 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Древнее потепление не снизило разнообразие тропических рыб ]]>
+</title>
+<description>
+<![CDATA[ Морские рыбы процветали, несмотря на повышение температуры океана ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/26/10d2ba2039bd4d9783480659e804a1d8.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/27/fishes-and-ancient-warming</guid>
+<link>https://nplus1.ru/news/2021/05/27/fishes-and-ancient-warming</link>
+<dc:creator>Семен Морозов</dc:creator>
+<pubDate>Thu, 27 May 2021 15:31:06 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Медленные волны и сонные веретена связали с реактивацией информации во время сна ]]>
+</title>
+<description>
+<![CDATA[ Она играет важную роль в формировании памяти ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/27/3043e8345c758512d14809eb6057b1c2.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/27/spindle-complexes-memory</guid>
+<link>https://nplus1.ru/news/2021/05/27/spindle-complexes-memory</link>
+<dc:creator>Анастасия Кузнецова</dc:creator>
+<pubDate>Thu, 27 May 2021 13:36:05 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Сбер разработал беспилотный автомобиль без руля и педалей ]]>
+</title>
+<description>
+<![CDATA[ Оно построено на собственной электрической платформе ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/27/d40b7d9c95ed2da3dda26ddad2f1fa0a.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/27/flip</guid>
+<link>https://nplus1.ru/news/2021/05/27/flip</link>
+<dc:creator>Григорий Копиев</dc:creator>
+<pubDate>Thu, 27 May 2021 12:51:35 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Годовалые дети сочли сверхъестественные способности признаком авторитета ]]>
+</title>
+<description>
+<![CDATA[ Младенцы связали сверхъестественные способности с социальным доминированием ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/26/fabbc69a7c11ed48ae1117539a5ca150.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/27/supernatural-powers</guid>
+<link>https://nplus1.ru/news/2021/05/27/supernatural-powers</link>
+<dc:creator>Виктория Барановская</dc:creator>
+<pubDate>Thu, 27 May 2021 12:42:02 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Квантование электрического заряда измерили линейкой ]]>
+</title>
+<description>
+<![CDATA[ Для этого физики заставили каплю масла левитировать в оптической ловушке малой жесткости ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/27/8ca4382cbd48fa31a8e94a0491701531.png" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/27/naked-eye</guid>
+<link>https://nplus1.ru/news/2021/05/27/naked-eye</link>
+<dc:creator>Марат Хамадеев</dc:creator>
+<pubDate>Thu, 27 May 2021 12:25:36 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Неандертальцы сохранили старые пищевые стратегии после прихода на Алтай ]]>
+</title>
+<description>
+<![CDATA[ Рацион питания и орудия труда указали на консервативность неандертальцев из Чагырской пещеры ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/27/82b9fb0a90ad468f6251b1f6b75bafa0.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/27/neanderthal-altai</guid>
+<link>https://nplus1.ru/news/2021/05/27/neanderthal-altai</link>
+<dc:creator>Михаил Подрезов</dc:creator>
+<pubDate>Thu, 27 May 2021 11:08:47 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Арабская станция Al Amal показала водородную корону Марса ]]>
+</title>
+<description>
+<![CDATA[ Изображение короны было составлено из четырех отдельных снимков ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/26/03f8d51244dc58a7fdb93881f9147ad3.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/27/hydrogen-corona-mars</guid>
+<link>https://nplus1.ru/news/2021/05/27/hydrogen-corona-mars</link>
+<dc:creator>Александр Войтюк</dc:creator>
+<pubDate>Thu, 27 May 2021 09:13:13 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Тасманийские дьяволы начали размножаться после возвращения на материковую Австралию ]]>
+</title>
+<description>
+<![CDATA[ Это произошло впервые за три тысячи лет. ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/26/de6eb4d4f5a0948b5f34e8f3d4b9db39.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/27/devils-comeback</guid>
+<link>https://nplus1.ru/news/2021/05/27/devils-comeback</link>
+<dc:creator>Сергей Коленов</dc:creator>
+<pubDate>Thu, 27 May 2021 09:02:54 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Мы переехали сюда ]]>
+</title>
+<description>
+<![CDATA[ Большой гид по пандемии ковида на весну 2021 года ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/26/ddf24edc643ad3b69ac3f1a33ef21867.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/material/2021/05/27/covid-where-are-we-now</guid>
+<link>https://nplus1.ru/material/2021/05/27/covid-where-are-we-now</link>
+<dc:creator>Полина Лосева</dc:creator>
+<pubDate>Thu, 27 May 2021 00:30:19 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ EHang представила крылатое аэротакси ]]>
+</title>
+<description>
+<![CDATA[ Оно автономно перевозит двух пассажиров на расстояние до 300 километров ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/26/8c648c697fd47eb74a85f7ce30fdbeab.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/26/ehang-winged</guid>
+<link>https://nplus1.ru/news/2021/05/26/ehang-winged</link>
+<dc:creator>Григорий Копиев</dc:creator>
+<pubDate>Wed, 26 May 2021 19:49:28 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Древние охотники тщательно рассчитали конструкцию и расположение каменных «воздушных змеев» ]]>
+</title>
+<description>
+<![CDATA[ Каменные ловушки для загонной охоты соорудили и использовали объединенные группы древних охотников ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/26/631b64250fe06a86aec79453f8357b94.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/26/desert-kites</guid>
+<link>https://nplus1.ru/news/2021/05/26/desert-kites</link>
+<dc:creator>Елена Синицкая</dc:creator>
+<pubDate>Wed, 26 May 2021 17:23:01 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Гигантскую выдру встретили в Аргентине впервые с 1980 годов ]]>
+</title>
+<description>
+<![CDATA[ Встреча произошла в национальном парке на северо-востоке страны. ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/26/bd4c8c87bcc089a7ada22db324046ef8.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/26/pteronura-brasiliensis</guid>
+<link>https://nplus1.ru/news/2021/05/26/pteronura-brasiliensis</link>
+<dc:creator>Сергей Коленов</dc:creator>
+<pubDate>Wed, 26 May 2021 16:34:56 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Невоспроизводимость научных статей только увеличила их цитируемость ]]>
+</title>
+<description>
+<![CDATA[ Этому не мешает даже публикация результатов проверки воспроизводимости ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/26/c82d895d0921b3bc3e258cbc4605d35e.png" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/26/citing-nonreplicable-publications</guid>
+<link>https://nplus1.ru/news/2021/05/26/citing-nonreplicable-publications</link>
+<dc:creator>Александр Дубов</dc:creator>
+<pubDate>Wed, 26 May 2021 16:13:58 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Использование компьютера и видеоигр более часа в день связали с плохой успеваемостью детей ]]>
+</title>
+<description>
+<![CDATA[ Непродолжительное использование их в выходные позитивно влияло на успехи в учебе ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/26/e224389684e023c02d7b2acef5f428f7.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/26/interective-technology-study</guid>
+<link>https://nplus1.ru/news/2021/05/26/interective-technology-study</link>
+<dc:creator>Анастасия Кузнецова</dc:creator>
+<pubDate>Wed, 26 May 2021 15:11:03 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Tesla отказалась от радара для автопилота ]]>
+</title>
+<description>
+<![CDATA[ Теперь алгоритмы используют только камеры ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/26/996c01dc83c7c552f1a2ceebcdb5fe2e.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/26/tesla-camera-only</guid>
+<link>https://nplus1.ru/news/2021/05/26/tesla-camera-only</link>
+<dc:creator>Григорий Копиев</dc:creator>
+<pubDate>Wed, 26 May 2021 14:57:47 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Аллельные варианты рецептора горького вкуса связали с тяжестью ковида ]]>
+</title>
+<description>
+<![CDATA[ Гомозиготных по нефункциональной аллеи людей чаще госпитализировали ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/26/0b939258131a013adb7aad94e7b03273.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/26/bitter-receptor-covid</guid>
+<link>https://nplus1.ru/news/2021/05/26/bitter-receptor-covid</link>
+<dc:creator>Анастасия Кузнецова</dc:creator>
+<pubDate>Wed, 26 May 2021 14:04:33 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Бусины из золота и сердолика указали на торговлю между Мозамбиком и Индией в Средние века ]]>
+</title>
+<description>
+<![CDATA[ Испанские археологи отметили включение суахили с Ибо в международную торговлю уже в начале II тысячелетия ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/26/7197045cfcc94cf4ca550a438b2f10ea.png" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/26/gold-trade-mozambique</guid>
+<link>https://nplus1.ru/news/2021/05/26/gold-trade-mozambique</link>
+<dc:creator>Михаил Подрезов</dc:creator>
+<pubDate>Wed, 26 May 2021 12:30:05 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ В меню древних иудеев обнаружили некошерную рыбу ]]>
+</title>
+<description>
+<![CDATA[ Анализ скелетных остатков рыб показал, что меню древних иудеев включало некошерных сомов и хрящевых рыб. ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/25/2a5bae5b9004ed540636d5a751f16d0a.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/26/non-kosher-fish-eaten-in-jerusalem</guid>
+<link>https://nplus1.ru/news/2021/05/26/non-kosher-fish-eaten-in-jerusalem</link>
+<dc:creator>Рузана Анчек</dc:creator>
+<pubDate>Wed, 26 May 2021 11:15:14 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Диким предком арбуза оказался кордофанский арбуз из Судана ]]>
+</title>
+<description>
+<![CDATA[ Его одомашнили более четырех тысяч лет назад. ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/25/1a601cbb112d876ec08a96e17e7b0a25.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/26/citrullus-lanatus-cordophanus</guid>
+<link>https://nplus1.ru/news/2021/05/26/citrullus-lanatus-cordophanus</link>
+<dc:creator>Сергей Коленов</dc:creator>
+<pubDate>Wed, 26 May 2021 09:11:16 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Модуль «Наука» получил разрешение отправиться к МКС ]]>
+</title>
+<description>
+<![CDATA[ Он намечен на 15 июля 2021 года ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/25/f7f240a57f85b011a517babd4498730a.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/25/nauka-module-ready</guid>
+<link>https://nplus1.ru/news/2021/05/25/nauka-module-ready</link>
+<dc:creator>Александр Войтюк</dc:creator>
+<pubDate>Tue, 25 May 2021 21:59:19 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Британцы разработали назальный спрей для лечения болезни Паркинсона ]]>
+</title>
+<description>
+<![CDATA[ Леводопа в нем представлен в форме геля ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/25/acb047326dcc7efc92b0bd18618ce336.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/25/Parkinson-spray</guid>
+<link>https://nplus1.ru/news/2021/05/25/Parkinson-spray</link>
+<dc:creator>Анастасия Кузнецова</dc:creator>
+<pubDate>Tue, 25 May 2021 19:42:14 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Геронтологи оценили «срок годности» человеческого организма в 120-150 лет ]]>
+</title>
+<description>
+<![CDATA[ В этом им помог анализ крови и фитнес-трекеры ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/25/52f8be0f79fdd1e0fc61d078f2a4097d.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/25/human-limits</guid>
+<link>https://nplus1.ru/news/2021/05/25/human-limits</link>
+<dc:creator>Полина Лосева</dc:creator>
+<pubDate>Tue, 25 May 2021 18:32:05 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Доращивание молодых особей в неволе увеличило численность редких короткокоготных кенгуру ]]>
+</title>
+<description>
+<![CDATA[ Это защитило их от одичавших кошек. ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/25/29169e04ac997e579b19329bafebd678.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/25/onychogalea-fraenata</guid>
+<link>https://nplus1.ru/news/2021/05/25/onychogalea-fraenata</link>
+<dc:creator>Сергей Коленов</dc:creator>
+<pubDate>Tue, 25 May 2021 17:30:57 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Рост насилия в эпоху бронзы вынудил женщин Анатолии взяться за оружие ]]>
+</title>
+<description>
+<![CDATA[ Американский археолог исследовала женские захоронения с погребальным инвентарем в виде оружия ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/25/900a1d1e151defc3169b9435af73cf54.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/25/women-weapons</guid>
+<link>https://nplus1.ru/news/2021/05/25/women-weapons</link>
+<dc:creator>Михаил Подрезов</dc:creator>
+<pubDate>Tue, 25 May 2021 16:58:29 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Асцидии помогли определить содержание нанопластика в воде ]]>
+</title>
+<description>
+<![CDATA[ Минимальная определяемая концентрация – один нанограмм на грамм вещества ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/25/2e27044da0bd07c9e4a6b4fe666dbeb5.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/25/sea-squirts-plastic</guid>
+<link>https://nplus1.ru/news/2021/05/25/sea-squirts-plastic</link>
+<dc:creator>Анастасия Кузнецова</dc:creator>
+<pubDate>Tue, 25 May 2021 16:43:42 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Google начала использовать операционную систему Fuchsia в серийных устройствах ]]>
+</title>
+<description>
+<![CDATA[ В будещем ее начнут использовать в компьютерах и смартфонах ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/25/1b621fb1f3bf02e75e51441e0dcecc19.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/25/fuchsia</guid>
+<link>https://nplus1.ru/news/2021/05/25/fuchsia</link>
+<dc:creator>Григорий Копиев</dc:creator>
+<pubDate>Tue, 25 May 2021 16:16:39 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Химики получили негексагональную двумерную форму углерода ]]>
+</title>
+<description>
+<![CDATA[ Ученые смогли создать новую аллотропную форму углерода — бифениленовую сеть ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/25/1f09ffe7a45c1585bd6caf1299d1df97.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/25/form-carbon</guid>
+<link>https://nplus1.ru/news/2021/05/25/form-carbon</link>
+<dc:creator>Виктория Барановская</dc:creator>
+<pubDate>Tue, 25 May 2021 15:05:21 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Воображаемая стена мима повлияла на восприятие пространства наблюдателями ]]>
+</title>
+<description>
+<![CDATA[ Иллюзии мимов повлияли на скорость ответов участников ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/25/48ae2e74e7941dc6f8878c8942a4932a.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/25/mimes-space-perception</guid>
+<link>https://nplus1.ru/news/2021/05/25/mimes-space-perception</link>
+<dc:creator>Анастасия Кузнецова</dc:creator>
+<pubDate>Tue, 25 May 2021 12:53:14 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Алюминий в цирконах указал на старт тектоники плит в раннем архее ]]>
+</title>
+<description>
+<![CDATA[ Около 3,6 миллиарда лет назад Земля переживала становление нового тектонического режима ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/25/ac87b1269743d955889e62f73b79fbcb.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/25/peraluminous-zircons</guid>
+<link>https://nplus1.ru/news/2021/05/25/peraluminous-zircons</link>
+<dc:creator>Винера Андреева</dc:creator>
+<pubDate>Tue, 25 May 2021 10:57:03 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Возвращение волков в штат Висконсин снизило число ДТП с участием оленей ]]>
+</title>
+<description>
+<![CDATA[ Волки регулируют численность оленей и заставляют их реже выходить на дороги. ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/24/3c02e640930cc50b9c414a71707cd4bc.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/25/wolves-safe-roads</guid>
+<link>https://nplus1.ru/news/2021/05/25/wolves-safe-roads</link>
+<dc:creator>Сергей Коленов</dc:creator>
+<pubDate>Tue, 25 May 2021 10:17:31 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Российские варианты коронавируса почти догнали британский по количеству инфицированных россиян ]]>
+</title>
+<description>
+<![CDATA[ Но пока неизвестно, являются ли они на самом деле более заразными ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/24/ec483d60b6c1a68630f1138cfd7e5cd3.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/25/russian-sars-variants</guid>
+<link>https://nplus1.ru/news/2021/05/25/russian-sars-variants</link>
+<dc:creator>Полина Лосева</dc:creator>
+<pubDate>Tue, 25 May 2021 08:48:54 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Чтение сказок связали с повышением окситоцина и снижением кортизола у детей в больнице ]]>
+</title>
+<description>
+<![CDATA[ И, вероятно, этим сказки помогли детям адаптироваться к условиям больницы и испытывать меньше боли ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/24/173bcb736b4e5e0f22fb2db13b30b446.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/24/storytelling-oxytocin-and-cortisol</guid>
+<link>https://nplus1.ru/news/2021/05/24/storytelling-oxytocin-and-cortisol</link>
+<dc:creator>Екатерина Рощина</dc:creator>
+<pubDate>Mon, 24 May 2021 22:02:02 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ На Солнце произошло 17 вспышек за два дня ]]>
+</title>
+<description>
+<![CDATA[ Ожидаемая магнитная буря придется на 25-26 мая ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/24/ad6ce47aab930c802bcae9515d95e406.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/24/magnetic-storm-coming</guid>
+<link>https://nplus1.ru/news/2021/05/24/magnetic-storm-coming</link>
+<dc:creator>Александр Войтюк</dc:creator>
+<pubDate>Mon, 24 May 2021 20:48:34 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Переход к земледелию позволил древним китайцам устраивать массовые алкогольные пиршества ]]>
+</title>
+<description>
+<![CDATA[ Алкоголь играл ритуальное значение для неолитических общин ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/24/7ead64d91b2611d3a5ee47c42bc620d8.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/24/alcohol-china</guid>
+<link>https://nplus1.ru/news/2021/05/24/alcohol-china</link>
+<dc:creator>Михаил Подрезов</dc:creator>
+<pubDate>Mon, 24 May 2021 20:40:44 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Яндекс вручил премию Ильи Сегаловича ]]>
+</title>
+<description>
+<![CDATA[ Лауреатами премии в 2021 году стали ученые из Москвы и Санкт-Петербурга. ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/24/3d69127424b8387e5d3443aea7d14d5b.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/24/ya-awards-2021</guid>
+<link>https://nplus1.ru/news/2021/05/24/ya-awards-2021</link>
+<dc:creator>Дмитрий Левин</dc:creator>
+<pubDate>Mon, 24 May 2021 20:00:10 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Лазер и дорожные знаки помогут в создании умного города ]]>
+</title>
+<description>
+<![CDATA[ Они позволяют обнаруживать вибрации на расстоянии ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/24/fcb8a3c5b684979a77bfec3e82903ef6.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/24/vibrosight</guid>
+<link>https://nplus1.ru/news/2021/05/24/vibrosight</link>
+<dc:creator>Григорий Копиев</dc:creator>
+<pubDate>Mon, 24 May 2021 19:15:56 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Паразиты превратили рабочих муравьев в ленивых долгожителей ]]>
+</title>
+<description>
+<![CDATA[ Ленточные черви, паразитирующие на европейских муравьях, увеличили продолжительность жизни своих хозяев ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/24/d2fb958b33c5903e0d975f19e473bd1a.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/24/ants-and-parasites</guid>
+<link>https://nplus1.ru/news/2021/05/24/ants-and-parasites</link>
+<dc:creator>Виктория Барановская</dc:creator>
+<pubDate>Mon, 24 May 2021 18:51:37 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Гренландию назвали главным природным источником ртути в арктических водах ]]>
+</title>
+<description>
+<![CDATA[ Талые ледниковые воды уносят рекордное количество ртути из подледниковых пород ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/24/510370a14e2c83130b5d85346b8ec62e.png" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/24/greenland-mercury</guid>
+<link>https://nplus1.ru/news/2021/05/24/greenland-mercury</link>
+<dc:creator>Марина Попова</dc:creator>
+<pubDate>Mon, 24 May 2021 18:10:00 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Оптогенетика помогла частично восстановить зрение мужчине после 40 лет слепоты ]]>
+</title>
+<description>
+<![CDATA[ Он смог различить предметы перед собой и сосчитать их ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/21/ff909c0798df787593a34714a0b070b8.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/24/optogenetics-vision</guid>
+<link>https://nplus1.ru/news/2021/05/24/optogenetics-vision</link>
+<dc:creator>Анастасия Кузнецова</dc:creator>
+<pubDate>Mon, 24 May 2021 18:00:10 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Упражнения на пространственную память улучшили математические способности детей ]]>
+</title>
+<description>
+<![CDATA[ В этом также помогли задания на невербальное мышление ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/24/5285bdf82d78a6be7699649a07e2d9a8.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/24/space-cognition-math</guid>
+<link>https://nplus1.ru/news/2021/05/24/space-cognition-math</link>
+<dc:creator>Анастасия Кузнецова</dc:creator>
+<pubDate>Mon, 24 May 2021 17:53:02 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Палеонтологи описали древнейшую бокошейную черепаху из Северной Америки ]]>
+</title>
+<description>
+<![CDATA[ Она обитала в прибрежных морских водах 95-96 миллионов лет назад. ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/24/44adb0b166817784c1580d9753ed76e8.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/24/pleurochayah-appalachius</guid>
+<link>https://nplus1.ru/news/2021/05/24/pleurochayah-appalachius</link>
+<dc:creator>Сергей Коленов</dc:creator>
+<pubDate>Mon, 24 May 2021 17:18:46 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Греческий цветок заподозрили в привлечении опылителей запахом мертвых насекомых ]]>
+</title>
+<description>
+<![CDATA[ Это первый случай привлечения опылителей запахом разлагающихся беспозвоночных ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/21/f51cbe2befca2e6d873478fb242cf0d1.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/24/flower-smells-like-dead-insects</guid>
+<link>https://nplus1.ru/news/2021/05/24/flower-smells-like-dead-insects</link>
+<dc:creator>Семен Морозов</dc:creator>
+<pubDate>Mon, 24 May 2021 16:07:50 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Американцы запатентовали прибор для быстрого определения группы крови ]]>
+</title>
+<description>
+<![CDATA[ Это поможет пациентам в реанимациях ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/24/be0ee826d17293bb8be3227c757ca031.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/24/blood-type-check</guid>
+<link>https://nplus1.ru/news/2021/05/24/blood-type-check</link>
+<dc:creator>Анастасия Кузнецова</dc:creator>
+<pubDate>Mon, 24 May 2021 13:29:09 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Искусствоведы разобрались в происхождении «Женщины с фонарем» ]]>
+</title>
+<description>
+<![CDATA[ В начале XVI века ее изготовили в мастерской восточных Нидерландах ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/24/8874311f9962669cd691fc40747c6721.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/24/sculpture-netherland</guid>
+<link>https://nplus1.ru/news/2021/05/24/sculpture-netherland</link>
+<dc:creator>Михаил Подрезов</dc:creator>
+<pubDate>Mon, 24 May 2021 11:52:25 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Перед ледниковым периодом Европу заселили генетически разнообразные популяции охотников-собирателей ]]>
+</title>
+<description>
+<![CDATA[ Палеогенетики выделили геном женщины из Румынии древностью около 34 тысяч лет ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/23/3f6180a2e322ef3785382cfa468fcedb.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/24/ancient-genome</guid>
+<link>https://nplus1.ru/news/2021/05/24/ancient-genome</link>
+<dc:creator>Михаил Подрезов</dc:creator>
+<pubDate>Mon, 24 May 2021 11:04:31 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Европиевый лазер достиг мощности в один ватт ]]>
+</title>
+<description>
+<![CDATA[ Для этого они вырастили кристалл KEu(WO4)2  ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/22/29ab193a8b1ed29c00d82bfb3ac0977c.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/24/eu3plus-laser</guid>
+<link>https://nplus1.ru/news/2021/05/24/eu3plus-laser</link>
+<dc:creator>Марат Хамадеев</dc:creator>
+<pubDate>Mon, 24 May 2021 09:18:14 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Космоплан VSS Unity совершил первый пилотируемый полет с нового космодрома ]]>
+</title>
+<description>
+<![CDATA[ В ходе полета космоплан достиг высоты 89,2 километров ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/23/c2d29223b41380cfd28c2e3944d8ded5.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/23/virgin-galaxy-new-flight</guid>
+<link>https://nplus1.ru/news/2021/05/23/virgin-galaxy-new-flight</link>
+<dc:creator>Александр Войтюк</dc:creator>
+<pubDate>Sun, 23 May 2021 18:03:16 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Чехол с тачпадом подключили к смартфону через экран ]]>
+</title>
+<description>
+<![CDATA[ Его можно использовать как дополнительный способ ввода ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/22/d4eecc4a244f80d36808528ad46b9da9.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/22/backtrack</guid>
+<link>https://nplus1.ru/news/2021/05/22/backtrack</link>
+<dc:creator>Григорий Копиев</dc:creator>
+<pubDate>Sat, 22 May 2021 17:20:15 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Разработчики закрыли проект сверхзвукового пассажирского самолета Aerion ]]>
+</title>
+<description>
+<![CDATA[ Компания Aerion не смогла найти финансирование на завершение проекта AS2 ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/22/30024ee6d43d1227e837f79a8a664036.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/22/aerion</guid>
+<link>https://nplus1.ru/news/2021/05/22/aerion</link>
+<dc:creator>Василий Сычев</dc:creator>
+<pubDate>Sat, 22 May 2021 14:18:29 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Китайский ровер «Чжужун» съехал на поверхность Марса ]]>
+</title>
+<description>
+<![CDATA[ И получил новые снимки ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/22/f722a18686eb35259f051178a0ef8024.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/22/churong-on-mars-now</guid>
+<link>https://nplus1.ru/news/2021/05/22/churong-on-mars-now</link>
+<dc:creator>Александр Войтюк</dc:creator>
+<pubDate>Sat, 22 May 2021 13:25:26 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ «Чанъэ-5» прислал фотографии из первой точки Лагранжа ]]>
+</title>
+<description>
+<![CDATA[ Он может отправиться исследовать околоземный астероид или вести наблюдения за внутренней Солнечной системой ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/21/720d47d22fc857e7c9f4b494b952f4e5.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/22/change-5-lagrange-photos</guid>
+<link>https://nplus1.ru/news/2021/05/22/change-5-lagrange-photos</link>
+<dc:creator>Александр Войтюк</dc:creator>
+<pubDate>Sat, 22 May 2021 12:20:24 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Генетическое редактирование спасло приматов от повышенного уровня холестерина ]]>
+</title>
+<description>
+<![CDATA[ Даже не самая высокая эффективность редактирования позволила заметно снизить содержание липопротеинов в крови животных ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/22/c4c4066592b20deb311fe001e0e5985f.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/22/crispr-edit-cholesterol</guid>
+<link>https://nplus1.ru/news/2021/05/22/crispr-edit-cholesterol</link>
+<dc:creator>Вера Сысоева</dc:creator>
+<pubDate>Sat, 22 May 2021 11:02:42 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Кто подмигнул нам из Кассиопеи? ]]>
+</title>
+<description>
+<![CDATA[ Событие новойС&nbsp;новыми звездами мы&nbsp;знакомы очень давно. ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/21/0fb9b6b9b7233394cdc681795c56c1b0.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/blog/2021/05/21/v1405-cas</guid>
+<link>https://nplus1.ru/blog/2021/05/21/v1405-cas</link>
+<dc:creator>Кирилл Соколовский</dc:creator>
+<pubDate>Fri, 21 May 2021 20:04:36 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Дополнительный палец изменил представление руки в мозге ]]>
+</title>
+<description>
+<![CDATA[ Это позволяет людям интегрировать новые конечности ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/21/d04465da9e5728b11f4b98a98557c52b.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/21/cyberpunk2021</guid>
+<link>https://nplus1.ru/news/2021/05/21/cyberpunk2021</link>
+<dc:creator>Григорий Копиев</dc:creator>
+<pubDate>Fri, 21 May 2021 19:55:46 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Тихоходками выстрелили из пушки для проверки гипотезы панспермии ]]>
+</title>
+<description>
+<![CDATA[ Физики из&nbsp;Англии выяснили, что тихоходки выживают, если выстрелить ими в&nbsp;замороженном виде в&nbsp;песок на&nbsp;скорости 728 метров в&nbsp;секунду, но&nbsp;не&nbsp;выживают на&nbsp;скорости более 900 метров в&nbsp;секунду, испытывая давление 1,14&nbsp;гигапаскалей. ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/21/905ed759183197d3a6d2fee398c20881.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/21/tardigrades-in-pool</guid>
+<link>https://nplus1.ru/news/2021/05/21/tardigrades-in-pool</link>
+<dc:creator>Виктория Барановская</dc:creator>
+<pubDate>Fri, 21 May 2021 19:44:17 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Мигрирующий черный стриж разогнался до 832 километров в день ]]>
+</title>
+<description>
+<![CDATA[ Этому помогли попутные ветра. ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/21/84b5a0dd94d5ff054f0b020c0789f7a5.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/21/apus-apus</guid>
+<link>https://nplus1.ru/news/2021/05/21/apus-apus</link>
+<dc:creator>Сергей Коленов</dc:creator>
+<pubDate>Fri, 21 May 2021 18:16:21 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Археологи научили нейросеть классифицировать древнюю керамику ]]>
+</title>
+<description>
+<![CDATA[ Машинное обучение освободило исследователей от рутинной работы ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/21/cfd12933a7fb10c31247c3b039be2fc0.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/21/tusayan-neural-networks</guid>
+<link>https://nplus1.ru/news/2021/05/21/tusayan-neural-networks</link>
+<dc:creator>Елена Синицкая</dc:creator>
+<pubDate>Fri, 21 May 2021 17:27:29 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Захоронения на стоянке Кокен эпохи бронзы оказались схожи с андроновской культурой ]]>
+</title>
+<description>
+<![CDATA[ Археологи представили первые результаты раскопок стоянки из Восточного Казахстане ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/21/39ff4c9b071cc45e47a1742412cdb101.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/21/koken-bronze</guid>
+<link>https://nplus1.ru/news/2021/05/21/koken-bronze</link>
+<dc:creator>Михаил Подрезов</dc:creator>
+<pubDate>Fri, 21 May 2021 16:25:15 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Плейстоценовый ледник сточил Скандинавское нагорье ]]>
+</title>
+<description>
+<![CDATA[ Скандинавский ледниковый щит сточил 117-194 метра нагорья ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/21/e5fdf19d762d7f4e179f929b7acb1f5a.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/21/scandinavian-ice-sheet</guid>
+<link>https://nplus1.ru/news/2021/05/21/scandinavian-ice-sheet</link>
+<dc:creator>Елена Гарова</dc:creator>
+<pubDate>Fri, 21 May 2021 15:42:38 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Из полипептидов сделали перерабатываемые аккумуляторы ]]>
+</title>
+<description>
+<![CDATA[ Американские материаловеды изготовили перерабатываемые органические аккумуляторы с&nbsp;электродами на основе полипептида. ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/21/8707a28c276dc9fd48f8c51b979f6267.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/21/polypept</guid>
+<link>https://nplus1.ru/news/2021/05/21/polypept</link>
+<dc:creator>Наталья Самойлова</dc:creator>
+<pubDate>Fri, 21 May 2021 15:12:27 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Сверхвысокое разрешение в микроскопии стало возможно без флуоресценции ]]>
+</title>
+<description>
+<![CDATA[ и расширит границы своей применимости ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/20/15e8e4a42a659db94b6deea91a62b97a.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/21/Super-resolution-imaging</guid>
+<link>https://nplus1.ru/news/2021/05/21/Super-resolution-imaging</link>
+<dc:creator>Оксана Борзенкова</dc:creator>
+<pubDate>Fri, 21 May 2021 14:41:46 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Таяние мерзлоты помешает достижению целей Парижского соглашения ]]>
+</title>
+<description>
+<![CDATA[ Его скорость делает нереализуемым ограничение уровня потепления 1,5 градусами Цельсия ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/21/956811c46f2ef30821cc74c08bffa4af.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/21/permafrost-carbon-feedbacks</guid>
+<link>https://nplus1.ru/news/2021/05/21/permafrost-carbon-feedbacks</link>
+<dc:creator>Марина Попова</dc:creator>
+<pubDate>Fri, 21 May 2021 12:54:18 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Животные передали новый рекомбинантный альфа-коронавирус своим хозяевам ]]>
+</title>
+<description>
+<![CDATA[ Это первый случай передачи человеку рекомбинантного альфа-коронавируса ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/21/50de4b6f8fcceeee24182619298e229d.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/21/dogs-coronavirus</guid>
+<link>https://nplus1.ru/news/2021/05/21/dogs-coronavirus</link>
+<dc:creator>Анастасия Кузнецова</dc:creator>
+<pubDate>Fri, 21 May 2021 12:04:55 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Вселенная вместо ничто ]]>
+</title>
+<description>
+<![CDATA[ Как Андрей Сахаров отвечал на вопрос о причине существования материи ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/21/5428f1da132cfebb9652f085cf81d5db.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/material/2021/05/21/sakharov-conditions</guid>
+<link>https://nplus1.ru/material/2021/05/21/sakharov-conditions</link>
+<dc:creator>Александр Дубов</dc:creator>
+<pubDate>Fri, 21 May 2021 12:01:56 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Жители стоянки Вучедоль эпохи ранней бронзы пострадали в детстве от поротического гиперостаза ]]>
+</title>
+<description>
+<![CDATA[ Археологи исследовали восемь черепов людей из Хорватии древностью более 4 тысяч лет ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/21/226a9f187b473838b0f051cc9393f993.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/21/croatia-bronze</guid>
+<link>https://nplus1.ru/news/2021/05/21/croatia-bronze</link>
+<dc:creator>Михаил Подрезов</dc:creator>
+<pubDate>Fri, 21 May 2021 11:50:12 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Астрономы нашли в холодных комах комет атомы железа и никеля ]]>
+</title>
+<description>
+<![CDATA[ Они были найдены в кометах Солнечной системы и межзвездной комете Борисова ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/20/60cda9165fbfbde447bfb2111316ad6b.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/21/borisov-metals</guid>
+<link>https://nplus1.ru/news/2021/05/21/borisov-metals</link>
+<dc:creator>Александр Войтюк</dc:creator>
+<pubDate>Fri, 21 May 2021 11:12:35 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Ford представил электрический пикап с «безручным» автопилотом ]]>
+</title>
+<description>
+<![CDATA[ Он проезжает почти 500 километров на одном заряде и может запитать целый дом ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/20/4e6bf85b5a7a8fbefd9dbc454ee1d90a.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/21/f-150</guid>
+<link>https://nplus1.ru/news/2021/05/21/f-150</link>
+<dc:creator>Григорий Копиев</dc:creator>
+<pubDate>Fri, 21 May 2021 10:16:20 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Редактура продолжается ]]>
+</title>
+<description>
+<![CDATA[ Как далеко продвинулись российские ученые, что еще два года назад были готовы начать эксперименты по созданию CRISPR-детей? ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/20/ec9fdd88b5fce32ce976cb6806283a29.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/blog/2021/05/20/rebrikov-goes-on</guid>
+<link>https://nplus1.ru/blog/2021/05/20/rebrikov-goes-on</link>
+<dc:creator>Дарья Спасская</dc:creator>
+<pubDate>Thu, 20 May 2021 23:16:10 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Тактильная стимуляция упростила управление протезом руки ]]>
+</title>
+<description>
+<![CDATA[ С помощью биологической обратной связи парализованному пациенту удалось брать и переносить предметы в два раза быстрее ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/19/79aacf50e04a4459bfa8fe3054d24722.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/20/bidirectional-bci</guid>
+<link>https://nplus1.ru/news/2021/05/20/bidirectional-bci</link>
+<dc:creator>Елизавета Ивтушок</dc:creator>
+<pubDate>Thu, 20 May 2021 21:00:05 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Неандертальцев из Васко-Кантабрии сгубила низкая мобильность ]]>
+</title>
+<description>
+<![CDATA[ Испанские археологи исследовали останки костей животных со стоянок неандертальцев и современных людей ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/20/b43483078027b855ddfeb732bbdea715.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/20/neanderthal-food</guid>
+<link>https://nplus1.ru/news/2021/05/20/neanderthal-food</link>
+<dc:creator>Михаил Подрезов</dc:creator>
+<pubDate>Thu, 20 May 2021 18:50:23 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Ученые составили список смеющихся животных ]]>
+</title>
+<description>
+<![CDATA[ Американские ученые описали 65 видов животных, которые могут смеяться. ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/19/5caa967ee4d96a470f8e539c2ebbe5a5.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/20/animals-laugh-too</guid>
+<link>https://nplus1.ru/news/2021/05/20/animals-laugh-too</link>
+<dc:creator>Рузана Анчек</dc:creator>
+<pubDate>Thu, 20 May 2021 18:42:28 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Вакцина от коронавируса на основе белков табака прошла первую фазу испытаний ]]>
+</title>
+<description>
+<![CDATA[ После второй дозы иммунитет выработался у 91 процента человек ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/20/6bd7a4bc6035020a0c2b8b0ca1779ed9.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/20/plant-vaccine</guid>
+<link>https://nplus1.ru/news/2021/05/20/plant-vaccine</link>
+<dc:creator>Анастасия Кузнецова</dc:creator>
+<pubDate>Thu, 20 May 2021 17:29:12 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Ферменты предотвратили образование кариесогенных биопленок на зубах ]]>
+</title>
+<description>
+<![CDATA[ Ученые надеются создать ополаскиватель на основе ферментов ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/20/b4b604f866031d18b4aab75e9330db8d.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/20/caries-enzymes</guid>
+<link>https://nplus1.ru/news/2021/05/20/caries-enzymes</link>
+<dc:creator>Анастасия Кузнецова</dc:creator>
+<pubDate>Thu, 20 May 2021 16:51:04 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Сбер представил ТВ-приставку с функциями умной колонки ]]>
+</title>
+<description>
+<![CDATA[ Компания также показала свою операционную систему для телевизоров ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/20/709a18c6addab9446a5ba96d1965a711.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/20/sberbox-top</guid>
+<link>https://nplus1.ru/news/2021/05/20/sberbox-top</link>
+<dc:creator>Григорий Копиев</dc:creator>
+<pubDate>Thu, 20 May 2021 15:41:10 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Полиэтилен превратили в авиационное топливо за час ]]>
+</title>
+<description>
+<![CDATA[ Самый популярный пластик в мире смогли превратить в топливо с высоким выходом за один час ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/20/29ab9ce7ded55f6fd9dd50a130add7a9.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/20/polyethylene-recycling</guid>
+<link>https://nplus1.ru/news/2021/05/20/polyethylene-recycling</link>
+<dc:creator>Виктория Барановская</dc:creator>
+<pubDate>Thu, 20 May 2021 14:07:14 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Неандертальцы вымерли в Крыму более 40 тысяч лет назад ]]>
+</title>
+<description>
+<![CDATA[ Британские палеоантропологи удревнили находки со стоянки Кабази II ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/20/9c764f2df9d48d2b0b21a8b72ab9ae5c.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/20/kabazi-neanderthal</guid>
+<link>https://nplus1.ru/news/2021/05/20/kabazi-neanderthal</link>
+<dc:creator>Михаил Подрезов</dc:creator>
+<pubDate>Thu, 20 May 2021 13:16:50 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Прокладки и тампоны научились выявлять молочницу ]]>
+</title>
+<description>
+<![CDATA[ Процедура занимает десять минут ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/20/2547f09b472c0c56076e6cd65211c40b.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/20/pads-candida</guid>
+<link>https://nplus1.ru/news/2021/05/20/pads-candida</link>
+<dc:creator>Анастасия Кузнецова</dc:creator>
+<pubDate>Thu, 20 May 2021 12:37:56 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Европейцы погубили половину популяций змей и ящериц Гваделупы ]]>
+</title>
+<description>
+<![CDATA[ При этом колонизацию архипелага индейцами гваделупские рептилии пережили без потерь. ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/19/6b6c1c3dbcb98e20d4650a1226c76238.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/20/guadeloupe-lost-reptiles</guid>
+<link>https://nplus1.ru/news/2021/05/20/guadeloupe-lost-reptiles</link>
+<dc:creator>Сергей Коленов</dc:creator>
+<pubDate>Thu, 20 May 2021 12:03:07 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Голову одной жены Франциска I заменили на голову другой в часослове XV века ]]>
+</title>
+<description>
+<![CDATA[ Подмену в средневековой миниатюре обнаружили на инфракрасной фотографии ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/19/b8d2494c137bfc68b92dabb11448bda2.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/20/hours-isabella-stuart</guid>
+<link>https://nplus1.ru/news/2021/05/20/hours-isabella-stuart</link>
+<dc:creator>Елена Синицкая</dc:creator>
+<pubDate>Thu, 20 May 2021 11:17:03 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Новый вид мозазавров указал на расцвет этой группы перед вымиранием ]]>
+</title>
+<description>
+<![CDATA[ Окаменелости нового вида обнаружены в меловом местонахождении в Марокко ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/18/8f4b2100659247c40e2e1d9c28d2f14b.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/20/Pluridens-serpentis</guid>
+<link>https://nplus1.ru/news/2021/05/20/Pluridens-serpentis</link>
+<dc:creator>Семен Морозов</dc:creator>
+<pubDate>Thu, 20 May 2021 10:49:37 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Физическая активность в детстве повысила успеваемость через эмоциональную регуляцию ]]>
+</title>
+<description>
+<![CDATA[ Исследование должно стать основанием для разработки новых программ для школьников ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/19/bf3b3c43587a91189bdbae3b215838d1.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/20/sport-helps-think</guid>
+<link>https://nplus1.ru/news/2021/05/20/sport-helps-think</link>
+<dc:creator>Вячеслав Гоменюк</dc:creator>
+<pubDate>Thu, 20 May 2021 10:18:10 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Пассажирские перевозки с помощью аэротакси в Европе наметили на 2025 год ]]>
+</title>
+<description>
+<![CDATA[ К 2025 году завершится сертификация нескольких аэротакси ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/19/4a40990a063fedc4baefe216569562b6.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/20/airtaxi</guid>
+<link>https://nplus1.ru/news/2021/05/20/airtaxi</link>
+<dc:creator>Василий Сычев</dc:creator>
+<pubDate>Thu, 20 May 2021 09:42:40 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Газогенератор российского двигателя для SSJ-100 подготовили к испытаниям ]]>
+</title>
+<description>
+<![CDATA[ Испытания газогенератора начнутся до конца 2021 года ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/19/464a5433a75af173f0f1968c51d62b03.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/20/pd-8</guid>
+<link>https://nplus1.ru/news/2021/05/20/pd-8</link>
+<dc:creator>Василий Сычев</dc:creator>
+<pubDate>Thu, 20 May 2021 08:40:49 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ «Ночные охотники» научились управлять беспилотниками-камикадзе ]]>
+</title>
+<description>
+<![CDATA[ Вертолеты способны запускать несколько дронов-камикадзе одновременно ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/19/5b4f0bce5ee9667e40e9f7cc264bd48c.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/19/drones</guid>
+<link>https://nplus1.ru/news/2021/05/19/drones</link>
+<dc:creator>Василий Сычев</dc:creator>
+<pubDate>Wed, 19 May 2021 20:57:39 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Употребление даже небольших доз алкоголя связали с уменьшением объема серого вещества ]]>
+</title>
+<description>
+<![CDATA[ А также с изменением структуры белого вешества ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/19/d99413c55edec26f06fc16aaaa6b898b.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/19/alcohol-small-doses</guid>
+<link>https://nplus1.ru/news/2021/05/19/alcohol-small-doses</link>
+<dc:creator>Анастасия Кузнецова</dc:creator>
+<pubDate>Wed, 19 May 2021 20:16:34 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ В комплексе галло-римских храмов нашли многочисленные ритуальные дары ]]>
+</title>
+<description>
+<![CDATA[ Вотивные приношения помещались в хорошо сохранившихся керамических сосудах ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/19/cf1066cf86a5bd096ed9bf6d467dd6a2.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/19/mons-seleucus-fana</guid>
+<link>https://nplus1.ru/news/2021/05/19/mons-seleucus-fana</link>
+<dc:creator>Винера Андреева</dc:creator>
+<pubDate>Wed, 19 May 2021 19:42:42 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Нейросеть научили менять ракурс съемки обычного видео ]]>
+</title>
+<description>
+<![CDATA[ В ее создании принимали участие разработчики Facebook ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/19/355ac43207cf51bf046323e4a3d02a40.gif" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/19/dynamic-view-synthesis</guid>
+<link>https://nplus1.ru/news/2021/05/19/dynamic-view-synthesis</link>
+<dc:creator>Григорий Копиев</dc:creator>
+<pubDate>Wed, 19 May 2021 18:53:36 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Ученые напугали синантропных пауков муравьиным запахом ]]>
+</title>
+<description>
+<![CDATA[ В будущем вещества, выделяемые муравьями, могут стать основой для антипаучьих репеллентов. ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/19/329b8fb6257213b7366d8c8194c0f4b0.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/19/spiders-vs-ants</guid>
+<link>https://nplus1.ru/news/2021/05/19/spiders-vs-ants</link>
+<dc:creator>Сергей Коленов</dc:creator>
+<pubDate>Wed, 19 May 2021 18:33:43 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Окаменелости из пещеры Сварткранс оказались древнейшими останками парантропа в ЮАР ]]>
+</title>
+<description>
+<![CDATA[ Древний гоминид умер около 2,2 миллиона лет назад ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/19/6ce9445772742e3b3282aefd9fec7448.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/19/swartkrans-cave</guid>
+<link>https://nplus1.ru/news/2021/05/19/swartkrans-cave</link>
+<dc:creator>Михаил Подрезов</dc:creator>
+<pubDate>Wed, 19 May 2021 17:05:40 +0300</pubDate>
+</item>
+<item>
+<title>
+<![CDATA[ Вакцина от аллергической астмы показала эффективность на мышах ]]>
+</title>
+<description>
+<![CDATA[ Антитела сохранились в течение года у 60 процентов мышей ]]>
+</description>
+<media:content url="https://nplus1.ru/images/2021/05/19/b78b5679d7c2faa9dfb869c1dff4266f.jpg" type="image/jpeg"/>
+<guid>https://nplus1.ru/news/2021/05/19/vaccine-asthma</guid>
+<link>https://nplus1.ru/news/2021/05/19/vaccine-asthma</link>
+<dc:creator>Анастасия Кузнецова</dc:creator>
+<pubDate>Wed, 19 May 2021 15:53:45 +0300</pubDate>
+</item>
+</channel>
+</rss>

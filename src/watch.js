@@ -1,8 +1,7 @@
 import onChange from 'on-change';
-import i18n from 'i18next';
 import _ from 'lodash';
 
-const updateModal = (title, description, link, postId, state) => {
+const updateModal = (title, description, link, postId, state, instancei18n) => {
   const modal = document.querySelector('.modal');
   modal.id = postId;
   modal.style = 'display: block; padding-right: 12px;';
@@ -11,8 +10,8 @@ const updateModal = (title, description, link, postId, state) => {
   modal.querySelector('p').textContent = description;
   const linkButton = modal.querySelector('a');
   linkButton.setAttribute('href', link);
-  linkButton.textContent = i18n.t('read');
-  modal.querySelector('.modal-footer button').textContent = i18n.t('close');
+  linkButton.textContent = instancei18n.t('read');
+  modal.querySelector('.modal-footer button').textContent = instancei18n.t('close');
   document.body.classList.add('modal-open');
   modal.classList.add('show');
   modal.removeAttribute('aria-hidden');
@@ -41,11 +40,11 @@ buttonsClosingModal.forEach((button) => {
   });
 });
 
-const renderFeeds = (current, previous) => {
+const renderFeeds = (current, previous, instancei18n) => {
   const feedsContainer = document.getElementById('feeds');
   if (previous.length === 0) {
     const titleFeeds = document.createElement('h2');
-    titleFeeds.textContent = i18n.t('feeds');
+    titleFeeds.textContent = instancei18n.t('feeds');
     feedsContainer.appendChild(titleFeeds);
     const listOfFeeds = document.createElement('ul');
     listOfFeeds.classList.add('list-group');
@@ -67,11 +66,11 @@ const renderFeeds = (current, previous) => {
   });
 };
 
-const renderPosts = (current, previous, state) => {
+const renderPosts = (current, previous, state, instancei18n) => {
   const linksContainer = document.getElementById('links');
   if (previous.length === 0) {
     const titlePosts = document.createElement('h2');
-    titlePosts.textContent = i18n.t('posts');
+    titlePosts.textContent = instancei18n.t('posts');
     linksContainer.appendChild(titlePosts);
     const liOfPosts = document.createElement('ul');
     linksContainer.appendChild(liOfPosts);
@@ -94,6 +93,7 @@ const renderPosts = (current, previous, state) => {
     }
     postLink.setAttribute('target', '_blank');
     postLink.setAttribute('href', link);
+    postLink.dataset.testid = 'post-link';
     postLink.textContent = title;
     postLink.addEventListener('click', () => {
       postLink.classList.remove('font-weight-bold');
@@ -104,16 +104,17 @@ const renderPosts = (current, previous, state) => {
     const button = document.createElement('button');
     button.classList.add('btn', 'btn-primary', 'ml-5');
     button.setAttribute('type', 'button');
-    button.textContent = i18n.t('buttons');
+    button.textContent = instancei18n.t('buttons');
     button.dataset.bsToggle = 'modal';
     button.dataset.bsTarget = `#${postId}`;
+    button.dataset.testid = 'preview';
     post.appendChild(button);
-    button.addEventListener('click', () => updateModal(title, description, link, postId, state));
+    button.addEventListener('click', () => updateModal(title, description, link, postId, state, instancei18n));
     liOfPosts.appendChild(post);
   });
 };
 
-const watch = (state) => {
+const watch = (state, instancei18n) => {
   const input = document.querySelector('input');
   const form = document.querySelector('form');
   const watchedState = onChange(state, function fn(path, current, previous) {
@@ -125,10 +126,10 @@ const watch = (state) => {
     }
 
     if (path === 'titles') {
-      renderFeeds(current, previous);
+      renderFeeds(current, previous, instancei18n);
     }
     if (path === 'posts') {
-      renderPosts(current, previous, this);
+      renderPosts(current, previous, this, instancei18n);
     }
     if (path === 'inputForm.status') {
       const p = form.querySelector('p');

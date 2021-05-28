@@ -1,15 +1,14 @@
 import * as yup from 'yup';
-import i18n from 'i18next';
 
-const getValidatedUrl = (url, urlList) => {
+const getValidatedUrl = (url, urlList, instancei18n) => {
   yup.setLocale({
     string: {
-      matches: `${i18n.t('errors.incorrect')}`,
+      matches: `${instancei18n.t('errors.incorrect')}`,
     },
   });
   const schema = yup.string()
     .matches(/(https?:\/\/)?([\w\W])*(rss)+([\w\W])*/)
-    .notOneOf(urlList, `${i18n.t('errors.wasAddedBefore')}`);
+    .notOneOf(urlList, `${instancei18n.t('errors.wasAddedBefore')}`);
   try {
     schema.validateSync(url, {
       abortEarly: false,

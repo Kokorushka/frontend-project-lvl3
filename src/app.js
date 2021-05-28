@@ -17,10 +17,9 @@ const addIdtoPosts = (posts, urlId) => {
   });
   return indexedPosts;
 };
-const updatePosts = (state, proxy, delay = 5000) => {
+const updatePosts = (state, proxy, instancei18n, delay = 5000) => {
   setTimeout(function request() {
     state.inputForm.urls.forEach(({ url, urlId }) => {
-      // try {
       axios.get(`${proxy}${encodeURIComponent(url)}`)
         .then((resp) => {
           const { posts } = getParsedXml(resp);
@@ -29,10 +28,8 @@ const updatePosts = (state, proxy, delay = 5000) => {
           const preparedPosts = addIdtoPosts(newPosts, urlId);
           state.posts = [...preparedPosts, ...state.posts];
         })
-      // }
-        .catch((error) => {
-          state.errors = i18n.t('errors.couldnotUpdate');
-          throw error;
+        .catch(() => {
+          state.errors = instancei18n.t('errors.couldnotUpdate');
         });
     });
     setTimeout(request, delay);
@@ -40,7 +37,8 @@ const updatePosts = (state, proxy, delay = 5000) => {
 };
 
 const app = () => {
-  i18n.init({
+  const instancei18n = i18n.createInstance();
+  instancei18n.init({
     lng: 'ru',
     debug: true,
     resources: {
@@ -63,44 +61,42 @@ const app = () => {
   };
 
   const proxy = 'https://hexlet-allorigins.herokuapp.com/get?url=';
-  const watchedState = watch(state);
+  const watchedState = watch(state, instancei18n);
   const form = document.querySelector('form');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    watchedState.errors = i18n.t('loading');
+    watchedState.errors = instancei18n.t('loading');
     const data = new FormData(form);
     const newFeed = data.get('rssUrl');
     form.reset();
     const { urls } = watchedState.inputForm;
     const preparedUrl = urls.map(({ url }) => url);
-    const errors = getValidatedUrl(newFeed, preparedUrl);
+    const errors = getValidatedUrl(newFeed, preparedUrl, instancei18n);
     if (_.isEmpty(errors)) {
       const urlId = _.uniqueId();
       watchedState.inputForm.urls = [...watchedState.inputForm.urls, { url: newFeed, urlId }];
-      // form.reset();
-      // try {
       axios.get(`${proxy}${encodeURIComponent(newFeed)}`)
         .then((resp) => {
-          const { feedTitle, feedDescription, posts } = getParsedXml(resp);
+          const {
+            feedTitle,
+            feedDescription,
+            posts,
+          } = getParsedXml(resp, instancei18n, watchedState);
           watchedState.titles.push([{ feedTitle, feedDescription, urlId }]);
           const indexedPosts = addIdtoPosts(posts, urlId);
           watchedState.posts = [...watchedState.posts, ...indexedPosts];
-          watchedState.errors = i18n.t('success');
+          watchedState.errors = instancei18n.t('success');
           watchedState.inputForm.status = 'valid';
-          // form.reset();
         })
-      // }
-        .catch((er) => {
-          // console.log(er);
-          watchedState.errors = i18n.t('errors.network');
-          throw er;
+        .catch(() => {
+          watchedState.errors = instancei18n.t('errors.network');
         });
     } else {
       watchedState.inputForm.status = 'invalid';
       watchedState.errors = errors;
     }
   });
-  updatePosts(watchedState, proxy);
+  updatePosts(watchedState, proxy, instancei18n);
 };
 
 export default app;
