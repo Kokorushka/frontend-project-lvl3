@@ -20,13 +20,14 @@ const rssUrl1 = 'https://nplus1.ru/rss';
 const rssUrl2 = 'https://arzamas.academy/feed_v1.rss';
 const proxy = 'https://hexlet-allorigins.herokuapp.com';
 const proxyApi = '/get';
-const pathToHtml = path.join(__dirname, '../template.html');
-const html = fs.readFileSync(pathToHtml, 'utf8');
+
 beforeAll(() => {
   nock.disableNetConnect();
 });
 
 beforeEach(async () => {
+  const pathToHtml = path.join(__dirname, '../template.html');
+  const html = fs.readFileSync(pathToHtml, 'utf8');
   document.body.innerHTML = html;
   await app();
 });
