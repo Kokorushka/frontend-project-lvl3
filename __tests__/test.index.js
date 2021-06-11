@@ -20,7 +20,12 @@ const rssUrl1 = 'https://nplus1.ru/rss';
 const rssUrl2 = 'https://arzamas.academy/feed_v1.rss';
 const proxy = 'https://hexlet-allorigins.herokuapp.com';
 const proxyApi = '/get';
-
+const addProxy = (url) => {
+  const urlWithProxy = new URL(proxy);
+  urlWithProxy.searchParams.set('url', url);
+  urlWithProxy.searchParams.set('disableCache', 'true');
+  return urlWithProxy.toString();
+};
 beforeAll(() => {
   nock.disableNetConnect();
 });
@@ -33,7 +38,7 @@ beforeEach(async () => {
 });
 
 test('add rss url', async () => {
-  nock(proxy)
+  nock(addProxy(rssUrl1))
     .get(proxyApi)
     .query({ url: rssUrl1 })
     .reply(200, { contents: rss1, disableCache: 'true' });
@@ -47,7 +52,7 @@ test('validation: add not url', async () => {
   expect(await screen.findByText(/Ссылка должна быть валидным URL/i)).toBeInTheDocument();
 });
 test('validation: add rss repeatedly', async () => {
-  nock(proxy)
+  nock(addProxy(rssUrl1))
     .get(proxyApi)
     .query({ url: rssUrl1 })
     .reply(200, { contents: rss1, disableCache: 'true' });
@@ -58,7 +63,7 @@ test('validation: add rss repeatedly', async () => {
   expect(await screen.findByText(/RSS уже существует/i)).toBeInTheDocument();
 });
 test('validation: invalid rss link', async () => {
-  nock(proxy)
+  nock(addProxy('https://hh.ru/rss'))
     .get(proxyApi)
     .query({ url: 'https://hh.ru/rss' })
     .reply(200, { contents: 'invalid rss', disableCache: 'true' });
@@ -67,7 +72,7 @@ test('validation: invalid rss link', async () => {
   expect(await screen.findByText(/Ресурс не содержит валидный RSS/i)).toBeInTheDocument();
 });
 test('network error', async () => {
-  nock(proxy)
+  nock(addProxy(rssUrl1))
     .get(proxyApi)
     .query({ url: rssUrl1, disableCache: 'true' })
     .reply(500);
@@ -76,11 +81,11 @@ test('network error', async () => {
   expect(await screen.findByText(/Ошибка сети/i)).toBeInTheDocument();
 });
 test('rss feeds and posts added', async () => {
-  nock(proxy)
+  nock(addProxy(rssUrl1))
     .get(proxyApi)
     .query({ url: rssUrl1 })
     .reply(200, { contents: rss1, disableCache: 'true' });
-  nock(proxy)
+  nock(addProxy(rssUrl2))
     .get(proxyApi)
     .query({ url: rssUrl2 })
     .reply(200, { contents: rss2, disableCache: 'true' });
@@ -96,7 +101,7 @@ test('rss feeds and posts added', async () => {
   expect(await screen.findByText(/15 самых популярных легенд об Иване Грозном/i)).toBeInTheDocument();
 });
 test('modals are working', async () => {
-  nock(proxy)
+  nock(addProxy(rssUrl1))
     .get(proxyApi)
     .query({ url: rssUrl1 })
     .reply(200, { contents: rss1, disableCache: 'true' });
