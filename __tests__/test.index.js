@@ -36,7 +36,7 @@ test('add rss url', async () => {
   nock(proxy)
     .get(proxyApi)
     .query({ url: rssUrl1 })
-    .reply(200, { contents: rss1 });
+    .reply(200, { contents: rss1, disableCache: 'true' });
   userEvent.type(screen.getByRole('textbox', { name: 'url' }), rssUrl1);
   userEvent.click(screen.getByRole('button', { name: 'add' }));
   expect(await screen.findByText(/RSS успешно загружен/i)).toBeInTheDocument();
@@ -50,7 +50,7 @@ test('validation: add rss repeatedly', async () => {
   nock(proxy)
     .get(proxyApi)
     .query({ url: rssUrl1 })
-    .reply(200, { contents: rss1 });
+    .reply(200, { contents: rss1, disableCache: 'true' });
   userEvent.type(screen.getByRole('textbox', { name: 'url' }), rssUrl1);
   userEvent.click(screen.getByRole('button', { name: 'add' }));
   userEvent.type(screen.getByRole('textbox', { name: 'url' }), rssUrl1);
@@ -69,7 +69,7 @@ test('validation: invalid rss link', async () => {
 test('network error', async () => {
   nock(proxy)
     .get(proxyApi)
-    .query({ url: rssUrl1 })
+    .query({ url: rssUrl1, disableCache: 'true' })
     .reply(500);
   userEvent.type(screen.getByRole('textbox', { name: 'url' }), rssUrl1);
   userEvent.click(screen.getByRole('button', { name: 'add' }));
@@ -79,11 +79,11 @@ test('rss feeds and posts added', async () => {
   nock(proxy)
     .get(proxyApi)
     .query({ url: rssUrl1 })
-    .reply(200, { contents: rss1 });
+    .reply(200, { contents: rss1, disableCache: 'true' });
   nock(proxy)
     .get(proxyApi)
     .query({ url: rssUrl2 })
-    .reply(200, { contents: rss2 });
+    .reply(200, { contents: rss2, disableCache: 'true' });
   userEvent.type(screen.getByRole('textbox', { name: 'url' }), rssUrl1);
   userEvent.click(screen.getByRole('button', { name: 'add' }));
   userEvent.type(screen.getByRole('textbox', { name: 'url' }), rssUrl2);
@@ -99,7 +99,7 @@ test('modals are working', async () => {
   nock(proxy)
     .get(proxyApi)
     .query({ url: rssUrl1 })
-    .reply(200, { contents: rss1 });
+    .reply(200, { contents: rss1, disableCache: 'true' });
   userEvent.type(screen.getByRole('textbox', { name: 'url' }), rssUrl1);
   userEvent.click(screen.getByRole('button', { name: 'add' }));
   const btns = await screen.findAllByTestId('preview');
