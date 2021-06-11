@@ -61,7 +61,7 @@ test('validation: invalid rss link', async () => {
   nock(proxy)
     .get(proxyApi)
     .query({ url: 'https://hh.ru/rss' })
-    .reply(200, { contents: 'invalid rss' });
+    .reply(200, { contents: 'invalid rss', disableCache: 'true' });
   userEvent.type(screen.getByRole('textbox', { name: 'url' }), 'https://hh.ru/rss');
   userEvent.click(screen.getByRole('button', { name: 'add' }));
   expect(await screen.findByText(/Ресурс не содержит валидный RSS/i)).toBeInTheDocument();

@@ -59,8 +59,13 @@ const app = () => {
     posts: [],
     errors: '',
   };
-
-  const proxy = 'https://hexlet-allorigins.herokuapp.com/get?url=';
+  const proxy = 'https://hexlet-allorigins.herokuapp.com';
+  const addProxy = (url) => {
+    const urlWithProxy = new URL('/get', proxy);
+    urlWithProxy.searchParams.set('url', url);
+    urlWithProxy.searchParams.set('disableCache', 'true');
+    return urlWithProxy.toString();
+  };
   const watchedState = watch(state, instancei18n);
   const form = document.querySelector('form');
   form.addEventListener('submit', (e) => {
@@ -75,7 +80,8 @@ const app = () => {
     if (_.isEmpty(errors)) {
       const urlId = _.uniqueId();
       watchedState.inputForm.urls = [...watchedState.inputForm.urls, { url: newFeed, urlId }];
-      axios.get(`${proxy}${encodeURIComponent(newFeed)}`)
+      // console.log(addProxy(newFeed));
+      axios.get(`${addProxy(newFeed)}`)
         .then((resp) => {
           const {
             feedTitle,
