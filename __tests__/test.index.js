@@ -26,7 +26,7 @@ beforeAll(() => {
 });
 
 beforeEach(async () => {
-  const pathToHtml = path.join(__dirname, '../template.html');
+  const pathToHtml = path.join(__dirname, '../index.html');
   const html = fs.readFileSync(pathToHtml, 'utf8');
   document.body.innerHTML = html;
   await app();
