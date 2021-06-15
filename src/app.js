@@ -2,9 +2,18 @@ import axios from 'axios';
 import _ from 'lodash';
 import i18n from 'i18next';
 import watch from './watch.js';
-import { getParsedXml, getValidatedUrl } from '../utils';
+import { parseXML, getValidatedUrl } from './utils';
 import ru from './locales/ru.js';
+// const parseRss = (data) => {
 
+// }
+const proxy = 'https://hexlet-allorigins.herokuapp.com/url=';
+// const addProxy = (url) => {
+//   const urlWithProxy = new URL(proxy);
+//   urlWithProxy.searchParams.set('url', url);
+//   urlWithProxy.searchParams.set('disableCache', 'true');
+//   return urlWithProxy.toString();
+// };
 const addIdtoPosts = (posts, urlId) => {
   const indexedPosts = posts.map((item) => {
     const postId = _.uniqueId();
@@ -17,12 +26,12 @@ const addIdtoPosts = (posts, urlId) => {
   });
   return indexedPosts;
 };
-const updatePosts = (state, proxy, instancei18n, delay = 5000) => {
+const updatePosts = (state, instancei18n, delay = 5000) => {
   setTimeout(function request() {
     state.inputForm.urls.forEach(({ url, urlId }) => {
       axios.get(`${proxy}${encodeURIComponent(url)}`)
         .then((resp) => {
-          const { posts } = getParsedXml(resp);
+          const { posts } = parseXML(resp);
           const titleList = state.posts.map(({ title }) => title);
           const newPosts = posts.filter(({ title }) => !_.includes(titleList, title));
           const preparedPosts = addIdtoPosts(newPosts, urlId);
@@ -59,13 +68,7 @@ const app = () => {
     posts: [],
     errors: '',
   };
-  const proxy = 'https://hexlet-allorigins.herokuapp.com';
-  const addProxy = (url) => {
-    const urlWithProxy = new URL('/get', proxy);
-    urlWithProxy.searchParams.set('url', url);
-    urlWithProxy.searchParams.set('disableCache', 'true');
-    return urlWithProxy.toString();
-  };
+
   const watchedState = watch(state, instancei18n);
   const form = document.querySelector('form');
   form.addEventListener('submit', (e) => {
@@ -81,20 +84,25 @@ const app = () => {
       const urlId = _.uniqueId();
       watchedState.inputForm.urls = [...watchedState.inputForm.urls, { url: newFeed, urlId }];
       // console.log(addProxy(newFeed));
-      axios.get(`${addProxy(newFeed)}`)
+      axios.get(`${proxy}${encodeURIComponent(newFeed)}`)
         .then((resp) => {
-          const {
-            feedTitle,
-            feedDescription,
-            posts,
-          } = getParsedXml(resp, instancei18n, watchedState);
-          watchedState.titles.push([{ feedTitle, feedDescription, urlId }]);
-          const indexedPosts = addIdtoPosts(posts, urlId);
-          watchedState.posts = [...watchedState.posts, ...indexedPosts];
-          watchedState.errors = instancei18n.t('success');
-          watchedState.inputForm.status = 'valid';
+          try {
+            const {
+              feedTitle,
+              feedDescription,
+              posts,
+            } = parseXML(resp, instancei18n, watchedState);
+            watchedState.titles.push([{ feedTitle, feedDescription, urlId }]);
+            const indexedPosts = addIdtoPosts(posts, urlId);
+            watchedState.posts = [...watchedState.posts, ...indexedPosts];
+            watchedState.errors = instancei18n.t('success');
+            watchedState.inputForm.status = 'valid';
+          } catch (error) {
+            state.errors = `${instancei18n.t('errors.noValidRSS')}`;
+          }
         })
-        .catch(() => {
+        .catch((err) => {
+          console.log(err);
           watchedState.errors = instancei18n.t('errors.network');
         });
     } else {
@@ -102,7 +110,7 @@ const app = () => {
       watchedState.errors = errors;
     }
   });
-  updatePosts(watchedState, proxy, instancei18n);
+  updatePosts(watchedState, instancei18n);
 };
 
 export default app;

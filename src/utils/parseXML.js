@@ -1,11 +1,11 @@
-const getParsedXml = (response, instancei18n, state) => {
+const parseXML = (response) => {
   const parser = new DOMParser();
   const result = parser.parseFromString(response.data.contents, 'application/xml');
-  const error = result.querySelector('parsererror');
-  if (error) {
-    state.errors = `${instancei18n.t('errors.noValidRSS')}`;
-    throw error;
-  }
+  // const error = result.querySelector('parsererror');
+  // if (error) {
+  //   state.errors = `${instancei18n.t('errors.noValidRSS')}`;
+  //   throw error;
+  // }
   const feedTitle = result.querySelector('title').textContent;
   const feedDescription = result.querySelector('description').textContent;
   const items = result.querySelectorAll('item');
@@ -18,4 +18,4 @@ const getParsedXml = (response, instancei18n, state) => {
   return { feedTitle, feedDescription, posts };
 };
 
-export default getParsedXml;
+export default parseXML;

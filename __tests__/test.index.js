@@ -20,12 +20,13 @@ const rssUrl1 = 'https://nplus1.ru/rss';
 const rssUrl2 = 'https://arzamas.academy/feed_v1.rss';
 const proxy = 'https://hexlet-allorigins.herokuapp.com';
 const proxyApi = '/get';
-const addProxy = (url) => {
-  const urlWithProxy = new URL(proxy);
-  urlWithProxy.searchParams.set('url', url);
-  urlWithProxy.searchParams.set('disableCache', 'true');
-  return urlWithProxy.toString();
-};
+// const addProxy = (url) => {
+//   const urlWithProxy = new URL(proxy);
+//   urlWithProxy.searchParams.set('url', url);
+//   urlWithProxy.searchParams.set('disableCache', 'true');
+//   return urlWithProxy.toString();
+// };
+// console.log(addProxy(rssUrl1));
 beforeAll(() => {
   nock.disableNetConnect();
 });
@@ -38,10 +39,10 @@ beforeEach(async () => {
 });
 
 test('add rss url', async () => {
-  nock(addProxy(rssUrl1))
+  nock(proxy)
     .get(proxyApi)
     .query({ url: rssUrl1 })
-    .reply(200, { contents: rss1, disableCache: 'true' });
+    .reply(200, { contents: rss1 });
   userEvent.type(screen.getByRole('textbox', { name: 'url' }), rssUrl1);
   userEvent.click(screen.getByRole('button', { name: 'add' }));
   expect(await screen.findByText(/RSS успешно загружен/i)).toBeInTheDocument();
@@ -52,10 +53,10 @@ test('validation: add not url', async () => {
   expect(await screen.findByText(/Ссылка должна быть валидным URL/i)).toBeInTheDocument();
 });
 test('validation: add rss repeatedly', async () => {
-  nock(addProxy(rssUrl1))
+  nock(proxy)
     .get(proxyApi)
     .query({ url: rssUrl1 })
-    .reply(200, { contents: rss1, disableCache: 'true' });
+    .reply(200, { contents: rss1 });
   userEvent.type(screen.getByRole('textbox', { name: 'url' }), rssUrl1);
   userEvent.click(screen.getByRole('button', { name: 'add' }));
   userEvent.type(screen.getByRole('textbox', { name: 'url' }), rssUrl1);
@@ -63,32 +64,32 @@ test('validation: add rss repeatedly', async () => {
   expect(await screen.findByText(/RSS уже существует/i)).toBeInTheDocument();
 });
 test('validation: invalid rss link', async () => {
-  nock(addProxy('https://hh.ru/rss'))
+  nock(proxy)
     .get(proxyApi)
     .query({ url: 'https://hh.ru/rss' })
-    .reply(200, { contents: 'invalid rss', disableCache: 'true' });
+    .reply(200, { contents: 'invalid rss' });
   userEvent.type(screen.getByRole('textbox', { name: 'url' }), 'https://hh.ru/rss');
   userEvent.click(screen.getByRole('button', { name: 'add' }));
   expect(await screen.findByText(/Ресурс не содержит валидный RSS/i)).toBeInTheDocument();
 });
 test('network error', async () => {
-  nock(addProxy(rssUrl1))
+  nock(proxy)
     .get(proxyApi)
-    .query({ url: rssUrl1, disableCache: 'true' })
+    .query({ url: rssUrl1 })
     .reply(500);
   userEvent.type(screen.getByRole('textbox', { name: 'url' }), rssUrl1);
   userEvent.click(screen.getByRole('button', { name: 'add' }));
   expect(await screen.findByText(/Ошибка сети/i)).toBeInTheDocument();
 });
 test('rss feeds and posts added', async () => {
-  nock(addProxy(rssUrl1))
+  nock(proxy)
     .get(proxyApi)
     .query({ url: rssUrl1 })
-    .reply(200, { contents: rss1, disableCache: 'true' });
-  nock(addProxy(rssUrl2))
+    .reply(200, { contents: rss1 });
+  nock(proxy)
     .get(proxyApi)
     .query({ url: rssUrl2 })
-    .reply(200, { contents: rss2, disableCache: 'true' });
+    .reply(200, { contents: rss2 });
   userEvent.type(screen.getByRole('textbox', { name: 'url' }), rssUrl1);
   userEvent.click(screen.getByRole('button', { name: 'add' }));
   userEvent.type(screen.getByRole('textbox', { name: 'url' }), rssUrl2);
@@ -101,10 +102,10 @@ test('rss feeds and posts added', async () => {
   expect(await screen.findByText(/15 самых популярных легенд об Иване Грозном/i)).toBeInTheDocument();
 });
 test('modals are working', async () => {
-  nock(addProxy(rssUrl1))
+  nock(proxy)
     .get(proxyApi)
     .query({ url: rssUrl1 })
-    .reply(200, { contents: rss1, disableCache: 'true' });
+    .reply(200, { contents: rss1 });
   userEvent.type(screen.getByRole('textbox', { name: 'url' }), rssUrl1);
   userEvent.click(screen.getByRole('button', { name: 'add' }));
   const btns = await screen.findAllByTestId('preview');
