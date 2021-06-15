@@ -7,13 +7,13 @@ import ru from './locales/ru.js';
 // const parseRss = (data) => {
 
 // }
-const proxy = 'https://hexlet-allorigins.herokuapp.com/get?url=';
-// const addProxy = (url) => {
-//   const urlWithProxy = new URL(proxy);
-//   urlWithProxy.searchParams.set('url', url);
-//   urlWithProxy.searchParams.set('disableCache', 'true');
-//   return urlWithProxy.toString();
-// };
+const proxy = 'https://hexlet-allorigins.herokuapp.com';
+const addProxy = (url) => {
+  const urlWithProxy = new URL('/get', proxy);
+  urlWithProxy.searchParams.set('url', url);
+  urlWithProxy.searchParams.set('disableCache', 'true');
+  return urlWithProxy.toString();
+};
 const addIdtoPosts = (posts, urlId) => {
   const indexedPosts = posts.map((item) => {
     const postId = _.uniqueId();
@@ -29,7 +29,7 @@ const addIdtoPosts = (posts, urlId) => {
 const updatePosts = (state, instancei18n, delay = 5000) => {
   setTimeout(function request() {
     state.inputForm.urls.forEach(({ url, urlId }) => {
-      axios.get(`${proxy}${encodeURIComponent(url)}`)
+      axios.get(addProxy(url))
         .then((resp) => {
           const { posts } = parseXML(resp);
           const titleList = state.posts.map(({ title }) => title);
@@ -84,7 +84,7 @@ const app = () => {
       const urlId = _.uniqueId();
       watchedState.inputForm.urls = [...watchedState.inputForm.urls, { url: newFeed, urlId }];
       // console.log(addProxy(newFeed));
-      axios.get(`${proxy}${encodeURIComponent(newFeed)}`)
+      axios.get(addProxy(newFeed))
         .then((resp) => {
           try {
             const {
