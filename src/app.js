@@ -73,7 +73,7 @@ const app = () => {
     watchedState.errors = instancei18n.t('loading');
     const data = new FormData(form);
     const newFeed = data.get('rssUrl');
-    form.reset();
+    // form.reset();
     const { urls } = watchedState.inputForm;
     const preparedUrl = urls.map(({ url }) => url);
     const errors = getValidatedUrl(newFeed, preparedUrl, instancei18n);
