@@ -7,7 +7,7 @@ import ru from './locales/ru.js';
 // const parseRss = (data) => {
 
 // }
-const proxy = 'https://hexlet-allorigins.herokuapp.com/url=';
+const proxy = 'https://hexlet-allorigins.herokuapp.com/get?url=';
 // const addProxy = (url) => {
 //   const urlWithProxy = new URL(proxy);
 //   urlWithProxy.searchParams.set('url', url);
