@@ -97,12 +97,14 @@ const app = () => {
             watchedState.posts = [...watchedState.posts, ...indexedPosts];
             watchedState.errors = instancei18n.t('success');
             watchedState.inputForm.status = 'valid';
-          } catch (error) {
+          } catch (err) {
+            // console.log(err);
             state.errors = `${instancei18n.t('errors.noValidRSS')}`;
+            return;
           }
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
+          // console.log(err);
           watchedState.errors = instancei18n.t('errors.network');
         });
     } else {

@@ -20,13 +20,6 @@ const rssUrl1 = 'https://nplus1.ru/rss';
 const rssUrl2 = 'https://arzamas.academy/feed_v1.rss';
 const proxy = 'https://hexlet-allorigins.herokuapp.com';
 const proxyApi = '/get';
-// const addProxy = (url) => {
-//   const urlWithProxy = new URL(proxy);
-//   urlWithProxy.searchParams.set('url', url);
-//   urlWithProxy.searchParams.set('disableCache', 'true');
-//   return urlWithProxy.toString();
-// };
-// console.log(addProxy(rssUrl1));
 beforeAll(() => {
   nock.disableNetConnect();
 });
@@ -41,7 +34,7 @@ beforeEach(async () => {
 test('add rss url', async () => {
   nock(proxy)
     .get(proxyApi)
-    .query({ url: rssUrl1 })
+    .query({ url: rssUrl1, disableCache: 'true' })
     .reply(200, { contents: rss1 });
   userEvent.type(screen.getByRole('textbox', { name: 'url' }), rssUrl1);
   userEvent.click(screen.getByRole('button', { name: 'add' }));
@@ -55,7 +48,7 @@ test('validation: add not url', async () => {
 test('validation: add rss repeatedly', async () => {
   nock(proxy)
     .get(proxyApi)
-    .query({ url: rssUrl1 })
+    .query({ url: rssUrl1, disableCache: 'true' })
     .reply(200, { contents: rss1 });
   userEvent.type(screen.getByRole('textbox', { name: 'url' }), rssUrl1);
   userEvent.click(screen.getByRole('button', { name: 'add' }));
@@ -66,7 +59,7 @@ test('validation: add rss repeatedly', async () => {
 test('validation: invalid rss link', async () => {
   nock(proxy)
     .get(proxyApi)
-    .query({ url: 'https://hh.ru/rss' })
+    .query({ url: 'https://hh.ru/rss', disableCache: 'true' })
     .reply(200, { contents: 'invalid rss' });
   userEvent.type(screen.getByRole('textbox', { name: 'url' }), 'https://hh.ru/rss');
   userEvent.click(screen.getByRole('button', { name: 'add' }));
@@ -75,7 +68,7 @@ test('validation: invalid rss link', async () => {
 test('network error', async () => {
   nock(proxy)
     .get(proxyApi)
-    .query({ url: rssUrl1 })
+    .query({ url: rssUrl1, disableCache: 'true' })
     .reply(500);
   userEvent.type(screen.getByRole('textbox', { name: 'url' }), rssUrl1);
   userEvent.click(screen.getByRole('button', { name: 'add' }));
@@ -84,11 +77,11 @@ test('network error', async () => {
 test('rss feeds and posts added', async () => {
   nock(proxy)
     .get(proxyApi)
-    .query({ url: rssUrl1 })
+    .query({ url: rssUrl1, disableCache: 'true' })
     .reply(200, { contents: rss1 });
   nock(proxy)
     .get(proxyApi)
-    .query({ url: rssUrl2 })
+    .query({ url: rssUrl2, disableCache: 'true' })
     .reply(200, { contents: rss2 });
   userEvent.type(screen.getByRole('textbox', { name: 'url' }), rssUrl1);
   userEvent.click(screen.getByRole('button', { name: 'add' }));
@@ -104,7 +97,7 @@ test('rss feeds and posts added', async () => {
 test('modals are working', async () => {
   nock(proxy)
     .get(proxyApi)
-    .query({ url: rssUrl1 })
+    .query({ url: rssUrl1, disableCache: 'true' })
     .reply(200, { contents: rss1 });
   userEvent.type(screen.getByRole('textbox', { name: 'url' }), rssUrl1);
   userEvent.click(screen.getByRole('button', { name: 'add' }));
