@@ -4,9 +4,7 @@ import i18n from 'i18next';
 import watch from './watch.js';
 import { parseXML, getValidatedUrl } from './utils';
 import ru from './locales/ru.js';
-// const parseRss = (data) => {
 
-// }
 const proxy = 'https://hexlet-allorigins.herokuapp.com';
 const addProxy = (url) => {
   const urlWithProxy = new URL('/get', proxy);
@@ -55,6 +53,8 @@ const app = () => {
     },
   }).then((resp) => resp);
 
+  const input = document.querySelector('input[name="rssUrl"]');
+  console.log(input);
   const state = {
     inputForm: {
       status: 'valid',
@@ -83,7 +83,6 @@ const app = () => {
     if (_.isEmpty(errors)) {
       const urlId = _.uniqueId();
       watchedState.inputForm.urls = [...watchedState.inputForm.urls, { url: newFeed, urlId }];
-      // console.log(addProxy(newFeed));
       axios.get(addProxy(newFeed))
         .then((resp) => {
           try {
@@ -97,6 +96,7 @@ const app = () => {
             watchedState.posts = [...watchedState.posts, ...indexedPosts];
             watchedState.errors = instancei18n.t('success');
             watchedState.inputForm.status = 'valid';
+            input.setAttribute('readonly');
           } catch (err) {
             watchedState.errors = instancei18n.t('errors.noValidRSS');
           }
