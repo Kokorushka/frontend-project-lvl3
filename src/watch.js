@@ -89,14 +89,14 @@ const renderPosts = (current, previous, state, instancei18n) => {
     if (_.includes(state.modal.postId, postId)) {
       postLink.classList.add('font-weight-normal');
     } else {
-      postLink.classList.add('font-weight-bold');
+      postLink.classList.add('fw-bold');
     }
     postLink.setAttribute('target', '_blank');
     postLink.setAttribute('href', link);
     postLink.dataset.testid = 'post-link';
     postLink.textContent = title;
     postLink.addEventListener('click', () => {
-      postLink.classList.remove('font-weight-bold');
+      postLink.classList.remove('fw-bold');
       postLink.classList.add('font-weight-normal');
       state.modal.postId.push(postId);
     });
@@ -156,7 +156,7 @@ const watch = (state, instancei18n) => {
     if (path === 'modal.postId') {
       const linksContainer = document.getElementById('links');
       current.forEach((item) => {
-        linksContainer.querySelector(`li[id="${item}"] a`).classList.remove('font-weight-bold');
+        linksContainer.querySelector(`li[id="${item}"] a`).classList.remove('fw-bold');
         linksContainer.querySelector(`li[id="${item}"] a`).classList.add('font-weight-normal');
       });
     }
