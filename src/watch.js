@@ -118,7 +118,7 @@ const watch = (state, instancei18n) => {
   const input = document.querySelector('input');
   const form = document.querySelector('form');
   const button = document.querySelector('button[aria-label="add"]');
-  const watchedState = onChange(state, function fn(path, current, previous) {
+  const watchedState = onChange(state, (path, current, previous) => {
     if (path === 'errors') {
       const p = form.querySelector('p');
       p.textContent = '';
@@ -130,7 +130,7 @@ const watch = (state, instancei18n) => {
       renderFeeds(current, previous, instancei18n);
     }
     if (path === 'posts') {
-      renderPosts(current, previous, this, instancei18n);
+      renderPosts(current, previous, state, instancei18n);
     }
     if (path === 'inputForm.status') {
       const p = form.querySelector('p');

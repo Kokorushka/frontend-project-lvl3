@@ -105,11 +105,11 @@ test('modals are working', async () => {
   userEvent.click(screen.getByRole('button', { name: 'add' }));
   const btns = await screen.findAllByTestId('preview');
   const postLinks = await screen.findAllByTestId('post-link');
-  expect(postLinks[0]).toHaveClass('font-weight-bold');
+  expect(postLinks[0]).toHaveClass('fw-bold');
   userEvent.click(btns[0]);
   const updatedPostLinks = await screen.findAllByTestId('post-link');
-  expect(updatedPostLinks[0]).not.toHaveClass('font-weight-bold');
-  expect(updatedPostLinks[1]).toHaveClass('font-weight-bold');
+  expect(updatedPostLinks[0]).not.toHaveClass('fw-bold');
+  expect(updatedPostLinks[1]).toHaveClass('fw-bold');
   expect(await screen.findByText('Метаанализ показал, что нарциссическое расстройства является фактором агрессивного поведения')).toBeVisible();
 });
 afterAll(() => {
