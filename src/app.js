@@ -74,6 +74,7 @@ const app = () => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     watchedState.errors = instancei18n.t('loading');
+    input.setAttribute('readonly', '');
     const data = new FormData(form);
     const newFeed = data.get('rssUrl');
     form.reset();
@@ -96,17 +97,20 @@ const app = () => {
             watchedState.posts = [...watchedState.posts, ...indexedPosts];
             watchedState.errors = instancei18n.t('success');
             watchedState.inputForm.status = 'valid';
-            input.setAttribute('readonly');
+            input.removeAttribute('readonly');
           } catch (err) {
             watchedState.errors = instancei18n.t('errors.noValidRSS');
+            input.removeAttribute('readonly');
           }
         })
         .catch(() => {
           watchedState.errors = instancei18n.t('errors.network');
+          input.removeAttribute('readonly');
         });
     } else {
       watchedState.inputForm.status = 'invalid';
       watchedState.errors = errors;
+      input.removeAttribute('readonly');
     }
   });
   updatePosts(watchedState, instancei18n);
