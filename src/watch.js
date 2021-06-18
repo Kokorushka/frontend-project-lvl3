@@ -149,7 +149,7 @@ const watch = (state, instancei18n) => {
         button.removeAttribute('disabled');
       }
       if (current === 'loading') {
-        input.setAttribute('readonly', '');
+        input.setAttribute('readonly', 'readonly');
         button.setAttribute('disabled', 'disabled');
       }
     }
