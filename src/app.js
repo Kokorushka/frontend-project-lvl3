@@ -53,8 +53,6 @@ const app = () => {
     },
   }).then((resp) => resp);
 
-  const input = document.querySelector('input[name="rssUrl"]');
-  console.log(input);
   const state = {
     inputForm: {
       status: 'valid',
@@ -74,13 +72,13 @@ const app = () => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     watchedState.errors = instancei18n.t('loading');
-    input.setAttribute('readonly', '');
+    watchedState.inputForm.status = 'loading';
     const data = new FormData(form);
     const newFeed = data.get('rssUrl');
     form.reset();
     const { urls } = watchedState.inputForm;
-    const preparedUrl = urls.map(({ url }) => url);
-    const errors = getValidatedUrl(newFeed, preparedUrl, instancei18n);
+    const preparedUrls = urls.map(({ url }) => url);
+    const errors = getValidatedUrl(newFeed, preparedUrls, instancei18n);
     if (_.isEmpty(errors)) {
       const urlId = _.uniqueId();
       watchedState.inputForm.urls = [...watchedState.inputForm.urls, { url: newFeed, urlId }];
@@ -97,20 +95,16 @@ const app = () => {
             watchedState.posts = [...watchedState.posts, ...indexedPosts];
             watchedState.errors = instancei18n.t('success');
             watchedState.inputForm.status = 'valid';
-            input.removeAttribute('readonly');
           } catch (err) {
             watchedState.errors = instancei18n.t('errors.noValidRSS');
-            input.removeAttribute('readonly');
           }
         })
         .catch(() => {
           watchedState.errors = instancei18n.t('errors.network');
-          input.removeAttribute('readonly');
         });
     } else {
       watchedState.inputForm.status = 'invalid';
       watchedState.errors = errors;
-      input.removeAttribute('readonly');
     }
   });
   updatePosts(watchedState, instancei18n);

@@ -117,6 +117,7 @@ const renderPosts = (current, previous, state, instancei18n) => {
 const watch = (state, instancei18n) => {
   const input = document.querySelector('input');
   const form = document.querySelector('form');
+  const button = document.querySelector('button[aria-label="add"]');
   const watchedState = onChange(state, function fn(path, current, previous) {
     if (path === 'errors') {
       const p = form.querySelector('p');
@@ -137,11 +138,19 @@ const watch = (state, instancei18n) => {
         input.classList.add('is-invalid');
         p.classList.remove('text-success');
         p.classList.add('text-danger');
+        button.removeAttribute('disabled');
+        input.removeAttribute('readonly');
       }
       if (current === 'valid') {
         input.classList.remove('is-invalid');
         p.classList.remove('text-danger');
         p.classList.add('text-success');
+        input.removeAttribute('readonly');
+        button.removeAttribute('disabled');
+      }
+      if (current === 'loading') {
+        input.setAttribute('readonly', '');
+        button.setAttribute('disabled', 'disabled');
       }
     }
     if (path === 'modal.postId') {

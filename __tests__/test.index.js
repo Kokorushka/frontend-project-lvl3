@@ -52,6 +52,7 @@ test('validation: add rss repeatedly', async () => {
     .reply(200, { contents: rss1 });
   userEvent.type(screen.getByRole('textbox', { name: 'url' }), rssUrl1);
   userEvent.click(screen.getByRole('button', { name: 'add' }));
+  expect(await screen.findByText(/RSS успешно загружен/i)).toBeInTheDocument();
   userEvent.type(screen.getByRole('textbox', { name: 'url' }), rssUrl1);
   userEvent.click(screen.getByRole('button', { name: 'add' }));
   expect(await screen.findByText(/RSS уже существует/i)).toBeInTheDocument();
@@ -85,11 +86,12 @@ test('rss feeds and posts added', async () => {
     .reply(200, { contents: rss2 });
   userEvent.type(screen.getByRole('textbox', { name: 'url' }), rssUrl1);
   userEvent.click(screen.getByRole('button', { name: 'add' }));
+  expect(await screen.findByText(/Сбер разработал беспилотный автомобиль без руля и педалей/i)).toBeInTheDocument();
+  expect(await screen.findByText(/Нарциссизм оказался значительным фактором риска агрессивного и насильственного поведения/i)).toBeInTheDocument();
+  expect(await screen.findByText(/Google начала использовать операционную систему Fuchsia в серийных устройствах/i)).toBeInTheDocument();
   userEvent.type(screen.getByRole('textbox', { name: 'url' }), rssUrl2);
   userEvent.click(screen.getByRole('button', { name: 'add' }));
-  expect(await screen.findByText(/Нарциссизм оказался значительным фактором риска агрессивного и насильственного поведения/i)).toBeInTheDocument();
-  expect(await screen.findByText(/Сбер разработал беспилотный автомобиль без руля и педалей/i)).toBeInTheDocument();
-  expect(await screen.findByText(/Google начала использовать операционную систему Fuchsia в серийных устройствах/i)).toBeInTheDocument();
+
   expect(await screen.findByText(/13 вопросов об инквизиции/i)).toBeInTheDocument();
   expect(await screen.findByText(/Хаяо Миядзаки: как начать смотреть его фильмы/i)).toBeInTheDocument();
   expect(await screen.findByText(/15 самых популярных легенд об Иване Грозном/i)).toBeInTheDocument();
