@@ -97,10 +97,12 @@ const app = () => {
             watchedState.inputForm.status = 'valid';
           } catch (err) {
             watchedState.errors = instancei18n.t('errors.noValidRSS');
+            watchedState.inputForm.status = 'invalid';
           }
         })
         .catch(() => {
           watchedState.errors = instancei18n.t('errors.network');
+          watchedState.inputForm.status = 'invalid';
         });
     } else {
       watchedState.inputForm.status = 'invalid';
