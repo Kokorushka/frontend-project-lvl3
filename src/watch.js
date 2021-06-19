@@ -130,7 +130,7 @@ const watch = (state, instancei18n) => {
       renderFeeds(current, previous, instancei18n);
     }
     if (path === 'posts') {
-      renderPosts(current, previous, state, instancei18n);
+      renderPosts(current, previous, watchedState, instancei18n);
     }
     if (path === 'inputForm.status') {
       const p = form.querySelector('p');
