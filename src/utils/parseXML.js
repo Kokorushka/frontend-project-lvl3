@@ -1,16 +1,22 @@
 const parseXML = (response) => {
   const parser = new DOMParser();
   const result = parser.parseFromString(response.data.contents, 'application/xml');
-  // const error = result.querySelector('parsererror');
-  // if (error) {
-  //   state.errors = `${instancei18n.t('errors.noValidRSS')}`;
-  //   throw error;
-  // }
-  const feedTitle = result.querySelector('title').textContent;
-  const feedDescription = result.querySelector('description').textContent;
+  // console.log(result);
+  const err = result.querySelector('parsererror');
+  // console.log(err);
+
+  if (err) {
+    const error = new Error(err.textContent);
+    error.isParsingError = true;
+    throw error;
+  }
+  const titleFeed = result.querySelector('chanel > title');
+  const feedTitle = titleFeed.textContent;
+  const descriptionFeed = result.querySelector('chanel > description');
+  const feedDescription = descriptionFeed.textContent;
   const items = result.querySelectorAll('item');
   const posts = [...items].map((item) => {
-    const link = item.querySelector('link').innerHTML;
+    const link = item.querySelector('link').textContent;
     const title = item.querySelector('title').textContent;
     const description = item.querySelector('description').textContent;
     return { link, title, description };
