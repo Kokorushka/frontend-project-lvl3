@@ -1,56 +1,48 @@
 import onChange from 'on-change';
 import _ from 'lodash';
 
-const updateModal = (title, description, link, postId, state, instancei18n) => {
-  const modal = document.querySelector('.modal');
-  modal.id = postId;
-  modal.style = 'display: block; padding-right: 12px;';
-  modal.setAttribute('role', 'dialog');
-  modal.querySelector('.modal-title').textContent = title;
-  modal.querySelector('p').textContent = description;
-  const linkButton = modal.querySelector('a');
-  linkButton.setAttribute('href', link);
-  linkButton.textContent = instancei18n.t('read');
-  modal.querySelector('.modal-footer button').textContent = instancei18n.t('close');
-  document.body.classList.add('modal-open');
-  modal.classList.add('show');
-  modal.removeAttribute('aria-hidden');
-  state.modal.postId.push(postId);
-};
-
-const closeModal = () => {
-  const modal = document.querySelector('.modal');
-  modal.removeAttribute('id');
-  modal.style = 'none';
-  modal.querySelector('.modal-title').textContent = '';
-  modal.querySelector('p').textContent = '';
-  const linkButton = modal.querySelector('a');
-  linkButton.removeAttribute('href');
-  linkButton.textContent = '';
-  modal.querySelector('button').textContent = '';
-  modal.setAttribute('aria-hidden', 'true');
+const closeModal = (elements) => {
+  elements.modal.removeAttribute('id');
+  elements.modal.style = 'none';
+  elements.modal.querySelector('.modal-title').textContent = '';
+  elements.modal.querySelector('p').textContent = '';
+  elements.linkButton.removeAttribute('href');
+  elements.linkButton.textContent = '';
+  elements.modal.querySelector('button').textContent = '';
+  elements.modal.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('modal-open');
-  modal.classList.remove('show');
+  elements.modal.classList.remove('show');
+};
+const updateModal = (title, description, link, postId, state, instancei18n, elements) => {
+  elements.modal.id = postId;
+  elements.modal.style = 'display: block; padding-right: 12px;';
+  elements.modal.setAttribute('role', 'dialog');
+  elements.modal.querySelector('.modal-title').textContent = title;
+  elements.modal.querySelector('p').textContent = description;
+  elements.linkButton.setAttribute('href', link);
+  elements.linkButton.textContent = instancei18n.t('read');
+  elements.modal.querySelector('.modal-footer button').textContent = instancei18n.t('close');
+  document.body.classList.add('modal-open');
+  elements.modal.classList.add('show');
+  elements.modal.removeAttribute('aria-hidden');
+  state.modal.postId.push(postId);
+  elements.buttonsClosingModal.forEach((button) => {
+    button.addEventListener('click', () => {
+      closeModal(elements);
+    });
+  });
 };
 
-const buttonsClosingModal = document.querySelectorAll('[data-bs-dismiss="modal"]');
-buttonsClosingModal.forEach((button) => {
-  button.addEventListener('click', () => {
-    closeModal();
-  });
-});
-
-const renderFeeds = (current, previous, instancei18n) => {
-  const feedsContainer = document.getElementById('feeds');
+const renderFeeds = (current, previous, instancei18n, elements) => {
   if (previous.length === 0) {
     const titleFeeds = document.createElement('h2');
     titleFeeds.textContent = instancei18n.t('feeds');
-    feedsContainer.appendChild(titleFeeds);
+    elements.feedsContainer.appendChild(titleFeeds);
     const listOfFeeds = document.createElement('ul');
     listOfFeeds.classList.add('list-group');
-    feedsContainer.appendChild(listOfFeeds);
+    elements.feedsContainer.appendChild(listOfFeeds);
   }
-  const listOfFeeds = feedsContainer.querySelector('ul');
+  const listOfFeeds = elements.feedsContainer.querySelector('ul');
   listOfFeeds.innerHTML = '';
   current.forEach(([{ feedTitle, feedDescription, urlId }]) => {
     const liFeed = document.createElement('li');
@@ -66,16 +58,15 @@ const renderFeeds = (current, previous, instancei18n) => {
   });
 };
 
-const renderPosts = (current, previous, state, instancei18n) => {
-  const linksContainer = document.getElementById('links');
+const renderPosts = (current, previous, state, instancei18n, elements) => {
   if (previous.length === 0) {
     const titlePosts = document.createElement('h2');
     titlePosts.textContent = instancei18n.t('posts');
-    linksContainer.appendChild(titlePosts);
+    elements.linksContainer.appendChild(titlePosts);
     const liOfPosts = document.createElement('ul');
-    linksContainer.appendChild(liOfPosts);
+    elements.linksContainer.appendChild(liOfPosts);
   }
-  const liOfPosts = linksContainer.querySelector('ul');
+  const liOfPosts = elements.linksContainer.querySelector('ul');
   liOfPosts.classList.add('list-group');
   liOfPosts.innerHTML = '';
   current.forEach(({
@@ -109,55 +100,49 @@ const renderPosts = (current, previous, state, instancei18n) => {
     button.dataset.bsTarget = `#${postId}`;
     button.dataset.testid = 'preview';
     post.appendChild(button);
-    button.addEventListener('click', () => updateModal(title, description, link, postId, state, instancei18n));
+    button.addEventListener('click', () => updateModal(title, description, link, postId, state, instancei18n, elements));
     liOfPosts.appendChild(post);
   });
 };
 
-const watch = (state, instancei18n) => {
-  const input = document.querySelector('input');
-  const form = document.querySelector('form');
-  const button = document.querySelector('button[aria-label="add"]');
+const watch = (state, instancei18n, elements) => {
   const watchedState = onChange(state, (path, current, previous) => {
     if (path === 'errors') {
-      const p = form.querySelector('p');
-      p.textContent = '';
-      p.textContent = current;
-      input.after(p);
+      elements.p.textContent = '';
+      elements.p.textContent = current;
+      elements.input.after(elements.p);
     }
 
     if (path === 'titles') {
-      renderFeeds(current, previous, instancei18n);
+      renderFeeds(current, previous, instancei18n, elements);
     }
     if (path === 'posts') {
-      renderPosts(current, previous, watchedState, instancei18n);
+      renderPosts(current, previous, watchedState, instancei18n, elements);
     }
     if (path === 'inputForm.status') {
-      const p = form.querySelector('p');
       if (current === 'invalid') {
-        input.classList.add('is-invalid');
-        p.classList.remove('text-success');
-        p.classList.add('text-danger');
-        button.removeAttribute('disabled');
-        input.removeAttribute('readonly');
+        elements.input.classList.add('is-invalid');
+        elements.p.classList.remove('text-success');
+        elements.p.classList.add('text-danger');
+        elements.buttonAdd.removeAttribute('disabled');
+        elements.input.removeAttribute('readonly');
       }
       if (current === 'valid') {
-        input.classList.remove('is-invalid');
-        p.classList.remove('text-danger');
-        p.classList.add('text-success');
-        input.removeAttribute('readonly');
-        button.removeAttribute('disabled');
+        elements.input.classList.remove('is-invalid');
+        elements.p.classList.remove('text-danger');
+        elements.p.classList.add('text-success');
+        elements.input.removeAttribute('readonly');
+        elements.buttonAdd.removeAttribute('disabled');
       }
       if (current === 'loading') {
-        input.setAttribute('readonly', 'readonly');
-        button.setAttribute('disabled', 'disabled');
+        elements.input.setAttribute('readonly', 'readonly');
+        elements.buttonAdd.setAttribute('disabled', 'disabled');
       }
     }
     if (path === 'modal.postId') {
-      const linksContainer = document.getElementById('links');
       current.forEach((item) => {
-        linksContainer.querySelector(`li[id="${item}"] a`).classList.remove('fw-bold');
-        linksContainer.querySelector(`li[id="${item}"] a`).classList.add('font-weight-normal');
+        elements.linksContainer.querySelector(`li[id="${item}"] a`).classList.remove('fw-bold');
+        elements.linksContainer.querySelector(`li[id="${item}"] a`).classList.add('font-weight-normal');
       });
     }
   });
