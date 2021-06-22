@@ -12,7 +12,7 @@ const addProxy = (url) => {
   urlWithProxy.searchParams.set('disableCache', 'true');
   return urlWithProxy.toString();
 };
-const addIdtoPosts = (posts, urlId) => {
+const addIdToPosts = (posts, urlId) => {
   const indexedPosts = posts.map((item) => {
     const postId = _.uniqueId();
     const newItem = {
@@ -32,11 +32,11 @@ const updatePosts = (watchedState, instancei18n) => {
         const { posts } = parseXML(resp);
         const titleList = watchedState.posts.map(({ title }) => title);
         const newPosts = posts.filter(({ title }) => !_.includes(titleList, title));
-        const preparedPosts = addIdtoPosts(newPosts, urlId);
+        const preparedPosts = addIdToPosts(newPosts, urlId);
         watchedState.posts = [...preparedPosts, ...watchedState.posts];
       })
       .catch(() => {
-        watchedState.errors = instancei18n.t('errors.couldnotUpdate');
+        watchedState.errors = instancei18n.t('errors.couldNotUpdate');
       }));
   Promise.all(promises).finally(() => {
     setTimeout(() => updatePosts(watchedState, instancei18n), delay);
@@ -102,7 +102,7 @@ const app = () => {
                 posts,
               } = parseXML(resp);
               watchedState.titles.push([{ feedTitle, feedDescription, urlId }]);
-              const indexedPosts = addIdtoPosts(posts, urlId);
+              const indexedPosts = addIdToPosts(posts, urlId);
               watchedState.posts = [...watchedState.posts, ...indexedPosts];
               watchedState.errors = instancei18n.t('success');
               watchedState.inputForm.status = 'valid';

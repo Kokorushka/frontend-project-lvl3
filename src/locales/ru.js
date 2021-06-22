@@ -4,7 +4,7 @@ export default {
       network: 'Ошибка сети',
       wasAddedBefore: 'RSS уже существует',
       incorrect: 'Ссылка должна быть валидным URL',
-      couldnotUpdate: 'Не удалось обновить новостную ленту',
+      couldNotUpdate: 'Не удалось обновить новостную ленту',
       noValidRSS: 'Ресурс не содержит валидный RSS',
     },
     loading: 'Загружается, пожалуйста, подождите.',
