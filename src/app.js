@@ -35,7 +35,8 @@ const updatePosts = (watchedState, instancei18n) => {
         const preparedPosts = addIdToPosts(newPosts, urlId);
         watchedState.posts = [...preparedPosts, ...watchedState.posts];
       })
-      .catch(() => {
+      .catch((e) => {
+        console.log(e);
         watchedState.errors = instancei18n.t('errors.couldNotUpdate');
       }));
   Promise.all(promises).finally(() => {
