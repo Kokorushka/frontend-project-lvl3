@@ -13,12 +13,12 @@ const closeModal = (elements) => {
   document.body.classList.remove('modal-open');
   elements.modal.classList.remove('show');
 };
-const updateModal = (title, description, link, postId, state, instancei18n, elements) => {
+const updateModal = (postTitle, postDescription, link, postId, state, instancei18n, elements) => {
   elements.modal.id = postId;
   elements.modal.style = 'display: block; padding-right: 12px;';
   elements.modal.setAttribute('role', 'dialog');
-  elements.modal.querySelector('.modal-title').textContent = title;
-  elements.modal.querySelector('p').textContent = description;
+  elements.modal.querySelector('.modal-title').textContent = postTitle;
+  elements.modal.querySelector('p').textContent = postDescription;
   elements.linkButton.setAttribute('href', link);
   elements.linkButton.textContent = instancei18n.t('read');
   elements.modal.querySelector('.modal-footer button').textContent = instancei18n.t('close');
@@ -44,14 +44,14 @@ const renderFeeds = (current, previous, instancei18n, elements) => {
   }
   const listOfFeeds = elements.feedsContainer.querySelector('ul');
   listOfFeeds.innerHTML = '';
-  current.forEach(([{ feedTitle, feedDescription, urlId }]) => {
+  current.forEach(([{ title, description, urlId }]) => {
     const liFeed = document.createElement('li');
     liFeed.classList.add('list-group-item');
     liFeed.setAttribute('id', urlId);
     const descriptionOfFeed = document.createElement('p');
-    descriptionOfFeed.textContent = feedDescription;
+    descriptionOfFeed.textContent = description;
     const titleOfFeed = document.createElement('h3');
-    titleOfFeed.textContent = feedTitle;
+    titleOfFeed.textContent = title;
     liFeed.appendChild(titleOfFeed);
     liFeed.appendChild(descriptionOfFeed);
     listOfFeeds.appendChild(liFeed);
@@ -70,7 +70,7 @@ const renderPosts = (current, previous, state, instancei18n, elements) => {
   liOfPosts.classList.add('list-group');
   liOfPosts.innerHTML = '';
   current.forEach(({
-    link, title, description, urlId, postId,
+    link, postTitle, postDescription, urlId, postId,
   }) => {
     const post = document.createElement('li');
     post.dataset.feedId = urlId;
@@ -85,7 +85,7 @@ const renderPosts = (current, previous, state, instancei18n, elements) => {
     postLink.setAttribute('target', '_blank');
     postLink.setAttribute('href', link);
     postLink.dataset.testid = 'post-link';
-    postLink.textContent = title;
+    postLink.textContent = postTitle;
     postLink.addEventListener('click', () => {
       postLink.classList.remove('fw-bold');
       postLink.classList.add('font-weight-normal');
@@ -100,14 +100,14 @@ const renderPosts = (current, previous, state, instancei18n, elements) => {
     button.dataset.bsTarget = `#${postId}`;
     button.dataset.testid = 'preview';
     post.appendChild(button);
-    button.addEventListener('click', () => updateModal(title, description, link, postId, state, instancei18n, elements));
+    button.addEventListener('click', () => updateModal(postTitle, postDescription, link, postId, state, instancei18n, elements));
     liOfPosts.appendChild(post);
   });
 };
 
 const watch = (state, instancei18n, elements) => {
   const watchedState = onChange(state, (path, current, previous) => {
-    if (path === 'errors') {
+    if (path === 'form.errors') {
       elements.p.textContent = '';
       elements.p.textContent = current;
       elements.input.after(elements.p);
@@ -119,7 +119,7 @@ const watch = (state, instancei18n, elements) => {
     if (path === 'posts') {
       renderPosts(current, previous, watchedState, instancei18n, elements);
     }
-    if (path === 'inputForm.status') {
+    if (path === 'form.status') {
       if (current === 'invalid') {
         elements.input.classList.add('is-invalid');
         elements.p.classList.remove('text-success');

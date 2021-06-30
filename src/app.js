@@ -24,9 +24,41 @@ const addIdToPosts = (posts, urlId) => {
   });
   return indexedPosts;
 };
+const loadRSS = (rss, watchedState, instancei18n) => {
+  const urlId = _.uniqueId();
+  watchedState.form.urls = [...watchedState.form.urls, { url: rss, urlId }];
+  axios.get(addProxy(rss))
+    .then((resp) => {
+      try {
+        const {
+          title,
+          description,
+          posts,
+        } = parseXML(resp);
+        watchedState.titles.push([{
+          title,
+          description,
+          urlId,
+        }]);
+        const indexedPosts = addIdToPosts(posts, urlId);
+        watchedState.posts = [...watchedState.posts, ...indexedPosts];
+        watchedState.form.errors = instancei18n.t('success');
+        watchedState.form.status = 'valid';
+      } catch (err) {
+        console.log(err);
+        watchedState.form.errors = instancei18n.t('errors.noValidRSS');
+        watchedState.form.status = 'invalid';
+      }
+    })
+    .catch(() => {
+      watchedState.form.errors = instancei18n.t('errors.network');
+      watchedState.form.status = 'invalid';
+    });
+};
+
 const updatePosts = (watchedState, instancei18n) => {
   const delay = 5000;
-  const promises = watchedState.inputForm.urls
+  const promises = watchedState.form.urls
     .map(({ url, urlId }) => axios.get(addProxy(url))
       .then((resp) => {
         const { posts } = parseXML(resp);
@@ -37,7 +69,7 @@ const updatePosts = (watchedState, instancei18n) => {
       })
       .catch((e) => {
         console.log(e);
-        watchedState.errors = instancei18n.t('errors.couldNotUpdate');
+        watchedState.form.errors = instancei18n.t('errors.couldNotUpdate');
       }));
   Promise.all(promises).finally(() => {
     setTimeout(() => updatePosts(watchedState, instancei18n), delay);
@@ -46,9 +78,10 @@ const updatePosts = (watchedState, instancei18n) => {
 
 const app = () => {
   const state = {
-    inputForm: {
+    form: {
       status: 'valid',
       urls: [],
+      errors: null,
     },
     modal: {
       open: null,
@@ -56,7 +89,6 @@ const app = () => {
     },
     titles: [],
     posts: [],
-    errors: '',
   };
 
   const instancei18n = i18n.createInstance();
@@ -83,43 +115,19 @@ const app = () => {
   }).then(() => {
     elements.form.addEventListener('submit', (e) => {
       e.preventDefault();
-      watchedState.errors = instancei18n.t('loading');
-      watchedState.inputForm.status = 'loading';
+      watchedState.form.errors = instancei18n.t('loading');
+      watchedState.form.status = 'loading';
       const data = new FormData(elements.form);
       const newFeed = data.get('rssUrl');
       elements.form.reset();
-      const { urls } = watchedState.inputForm;
+      const { urls } = watchedState.form;
       const preparedUrls = urls.map(({ url }) => url);
       const errors = getValidatedUrl(newFeed, preparedUrls, instancei18n);
       if (_.isEmpty(errors)) {
-        const urlId = _.uniqueId();
-        watchedState.inputForm.urls = [...watchedState.inputForm.urls, { url: newFeed, urlId }];
-        axios.get(addProxy(newFeed))
-          .then((resp) => {
-            try {
-              const {
-                feedTitle,
-                feedDescription,
-                posts,
-              } = parseXML(resp);
-              watchedState.titles.push([{ feedTitle, feedDescription, urlId }]);
-              const indexedPosts = addIdToPosts(posts, urlId);
-              watchedState.posts = [...watchedState.posts, ...indexedPosts];
-              watchedState.errors = instancei18n.t('success');
-              watchedState.inputForm.status = 'valid';
-            } catch (err) {
-              console.log(err);
-              watchedState.errors = instancei18n.t('errors.noValidRSS');
-              watchedState.inputForm.status = 'invalid';
-            }
-          })
-          .catch(() => {
-            watchedState.errors = instancei18n.t('errors.network');
-            watchedState.inputForm.status = 'invalid';
-          });
+        loadRSS(newFeed, watchedState, instancei18n);
       } else {
-        watchedState.inputForm.status = 'invalid';
-        watchedState.errors = errors;
+        watchedState.form.status = 'invalid';
+        watchedState.form.errors = errors;
       }
     });
     updatePosts(watchedState, instancei18n);
