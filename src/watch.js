@@ -25,7 +25,7 @@ const updateModal = (postTitle, postDescription, link, postId, state, instancei1
   document.body.classList.add('modal-open');
   elements.modal.classList.add('show');
   elements.modal.removeAttribute('aria-hidden');
-  state.modal.postId.push(postId);
+  state.postId.add(postId);
   elements.buttonsClosingModal.forEach((button) => {
     button.addEventListener('click', () => {
       closeModal(elements);
@@ -44,7 +44,7 @@ const renderFeeds = (current, previous, instancei18n, elements) => {
   }
   const listOfFeeds = elements.feedsContainer.querySelector('ul');
   listOfFeeds.innerHTML = '';
-  current.forEach(([{ title, description, urlId }]) => {
+  current.forEach(([{ urlId, title, description }]) => {
     const liFeed = document.createElement('li');
     liFeed.classList.add('list-group-item');
     liFeed.setAttribute('id', urlId);
@@ -77,7 +77,7 @@ const renderPosts = (current, previous, state, instancei18n, elements) => {
     post.id = postId;
     post.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-start');
     const postLink = document.createElement('a');
-    if (_.includes(state.modal.postId, postId)) {
+    if (_.includes(state.postId, postId)) {
       postLink.classList.add('font-weight-normal');
     } else {
       postLink.classList.add('fw-bold');
@@ -89,7 +89,7 @@ const renderPosts = (current, previous, state, instancei18n, elements) => {
     postLink.addEventListener('click', () => {
       postLink.classList.remove('fw-bold');
       postLink.classList.add('font-weight-normal');
-      state.modal.postId.push(postId);
+      state.postId.add(postId);
     });
     post.appendChild(postLink);
     const button = document.createElement('button');
@@ -113,7 +113,7 @@ const watch = (state, instancei18n, elements) => {
       elements.input.after(elements.p);
     }
 
-    if (path === 'titles') {
+    if (path === 'form.urls') {
       renderFeeds(current, previous, instancei18n, elements);
     }
     if (path === 'posts') {
@@ -139,7 +139,7 @@ const watch = (state, instancei18n, elements) => {
         elements.buttonAdd.setAttribute('disabled', 'disabled');
       }
     }
-    if (path === 'modal.postId') {
+    if (path === 'postId') {
       current.forEach((item) => {
         elements.linksContainer.querySelector(`li[id="${item}"] a`).classList.remove('fw-bold');
         elements.linksContainer.querySelector(`li[id="${item}"] a`).classList.add('font-weight-normal');

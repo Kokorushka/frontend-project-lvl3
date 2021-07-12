@@ -1,10 +1,10 @@
-export default (instancei18n) => {
+export default () => {
   const object = {
     string: {
-      url: () => (`${instancei18n.t('errors.incorrect')}`),
+      url: 'incorrect',
     },
     mixed: {
-      notOneOf: () => (`${instancei18n.t('errors.wasAddedBefore')}`),
+      notOneOf: 'wasAddedBefore',
     },
   };
   return object;

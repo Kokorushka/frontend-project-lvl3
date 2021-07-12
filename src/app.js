@@ -26,7 +26,6 @@ const addIdToPosts = (posts, urlId) => {
 };
 const loadRSS = (rss, watchedState, instancei18n) => {
   const urlId = _.uniqueId();
-  watchedState.form.urls = [...watchedState.form.urls, { url: rss, urlId }];
   axios.get(addProxy(rss))
     .then((resp) => {
       try {
@@ -35,10 +34,11 @@ const loadRSS = (rss, watchedState, instancei18n) => {
           description,
           posts,
         } = parseXML(resp);
-        watchedState.titles.push([{
+        watchedState.form.urls.push([{
+          url: rss,
+          urlId,
           title,
           description,
-          urlId,
         }]);
         const indexedPosts = addIdToPosts(posts, urlId);
         watchedState.posts = [...watchedState.posts, ...indexedPosts];
@@ -59,7 +59,7 @@ const loadRSS = (rss, watchedState, instancei18n) => {
 const updatePosts = (watchedState, instancei18n) => {
   const delay = 5000;
   const promises = watchedState.form.urls
-    .map(({ url, urlId }) => axios.get(addProxy(url))
+    .map(([{ url, urlId }]) => axios.get(addProxy(url))
       .then((resp) => {
         const { posts } = parseXML(resp);
         const titleList = watchedState.posts.map(({ title }) => title);
@@ -83,11 +83,7 @@ const app = () => {
       urls: [],
       errors: null,
     },
-    modal: {
-      open: null,
-      postId: [],
-    },
-    titles: [],
+    postId: new Set(null),
     posts: [],
   };
 
@@ -122,12 +118,12 @@ const app = () => {
       elements.form.reset();
       const { urls } = watchedState.form;
       const preparedUrls = urls.map(({ url }) => url);
-      const errors = getValidatedUrl(newFeed, preparedUrls, instancei18n);
-      if (_.isEmpty(errors)) {
+      const key = getValidatedUrl(newFeed, preparedUrls);
+      if (_.isEmpty(key)) {
         loadRSS(newFeed, watchedState, instancei18n);
       } else {
         watchedState.form.status = 'invalid';
-        watchedState.form.errors = errors;
+        watchedState.form.errors = instancei18n.t(`errors.${key}`);
       }
     });
     updatePosts(watchedState, instancei18n);
