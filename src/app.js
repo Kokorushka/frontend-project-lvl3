@@ -34,12 +34,12 @@ const loadRSS = (rss, watchedState, instancei18n) => {
           description,
           posts,
         } = parseXML(resp);
-        watchedState.form.urls.push([{
+        watchedState.form.urls.push({
           url: rss,
           urlId,
           title,
           description,
-        }]);
+        });
         const indexedPosts = addIdToPosts(posts, urlId);
         watchedState.posts = [...watchedState.posts, ...indexedPosts];
         watchedState.form.errors = instancei18n.t('success');
@@ -59,7 +59,7 @@ const loadRSS = (rss, watchedState, instancei18n) => {
 const updatePosts = (watchedState, instancei18n) => {
   const delay = 5000;
   const promises = watchedState.form.urls
-    .map(([{ url, urlId }]) => axios.get(addProxy(url))
+    .map(({ url, urlId }) => axios.get(addProxy(url))
       .then((resp) => {
         const { posts } = parseXML(resp);
         const titleList = watchedState.posts.map(({ title }) => title);
@@ -117,7 +117,9 @@ const app = () => {
       const newFeed = data.get('rssUrl');
       elements.form.reset();
       const { urls } = watchedState.form;
+      // console.log(urls);
       const preparedUrls = urls.map(({ url }) => url);
+      // console.log(preparedUrls);
       const key = getValidatedUrl(newFeed, preparedUrls);
       if (_.isEmpty(key)) {
         loadRSS(newFeed, watchedState, instancei18n);

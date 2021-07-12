@@ -44,7 +44,7 @@ const renderFeeds = (current, previous, instancei18n, elements) => {
   }
   const listOfFeeds = elements.feedsContainer.querySelector('ul');
   listOfFeeds.innerHTML = '';
-  current.forEach(([{ urlId, title, description }]) => {
+  current.forEach(({ urlId, title, description }) => {
     const liFeed = document.createElement('li');
     liFeed.classList.add('list-group-item');
     liFeed.setAttribute('id', urlId);
