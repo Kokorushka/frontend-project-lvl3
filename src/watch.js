@@ -13,8 +13,11 @@ const closeModal = (elements) => {
   document.body.classList.remove('modal-open');
   elements.modal.classList.remove('show');
 };
-const updateModal = (postTitle, postDescription, link, postId, state, instancei18n, elements) => {
-  elements.modal.id = postId;
+const updateModal = (currentItem, state, instancei18n, elements) => {
+  elements.modal.id = currentItem;
+  const { posts } = state;
+  const currentPost = posts.find((post) => post.id === currentItem);
+  const { postTitle, postDescription, link } = currentPost;
   elements.modal.style = 'display: block; padding-right: 12px;';
   elements.modal.setAttribute('role', 'dialog');
   elements.modal.querySelector('.modal-title').textContent = postTitle;
@@ -25,7 +28,7 @@ const updateModal = (postTitle, postDescription, link, postId, state, instancei1
   document.body.classList.add('modal-open');
   elements.modal.classList.add('show');
   elements.modal.removeAttribute('aria-hidden');
-  state.postId.add(postId);
+  // state.viewedPosts.add(id);
   elements.buttonsClosingModal.forEach((button) => {
     button.addEventListener('click', () => {
       closeModal(elements);
@@ -44,7 +47,11 @@ const renderFeeds = (current, previous, instancei18n, elements) => {
   }
   const listOfFeeds = elements.feedsContainer.querySelector('ul');
   listOfFeeds.innerHTML = '';
-  current.forEach(({ urlId, title, description }) => {
+  current.forEach(({
+    urlId,
+    title,
+    description,
+  }) => {
     const liFeed = document.createElement('li');
     liFeed.classList.add('list-group-item');
     liFeed.setAttribute('id', urlId);
@@ -66,84 +73,123 @@ const renderPosts = (current, previous, state, instancei18n, elements) => {
     const liOfPosts = document.createElement('ul');
     elements.linksContainer.appendChild(liOfPosts);
   }
+  const {
+    viewedPosts,
+  } = state;
   const liOfPosts = elements.linksContainer.querySelector('ul');
   liOfPosts.classList.add('list-group');
   liOfPosts.innerHTML = '';
   current.forEach(({
-    link, postTitle, postDescription, urlId, postId,
+    postTitle,
+    link,
+    postDescription,
+    channelId,
+    id,
   }) => {
     const post = document.createElement('li');
-    post.dataset.feedId = urlId;
-    post.id = postId;
+    post.dataset.feedId = channelId;
+    post.id = id;
     post.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-start');
     const postLink = document.createElement('a');
-    if (_.includes(state.postId, postId)) {
+    if (viewedPosts.has(id)) {
       postLink.classList.add('font-weight-normal');
     } else {
-      postLink.classList.add('fw-bold');
+      postLink.classList.add('font-weight-bold');
     }
     postLink.setAttribute('target', '_blank');
     postLink.setAttribute('href', link);
     postLink.dataset.testid = 'post-link';
     postLink.textContent = postTitle;
-    postLink.addEventListener('click', () => {
-      postLink.classList.remove('fw-bold');
-      postLink.classList.add('font-weight-normal');
-      state.postId.add(postId);
-    });
     post.appendChild(postLink);
     const button = document.createElement('button');
     button.classList.add('btn', 'btn-primary', 'ml-5');
     button.setAttribute('type', 'button');
     button.textContent = instancei18n.t('buttons');
     button.dataset.bsToggle = 'modal';
-    button.dataset.bsTarget = `#${postId}`;
+    button.dataset.bsTarget = `#${id}`;
+    button.dataset.id = id;
     button.dataset.testid = 'preview';
     post.appendChild(button);
-    button.addEventListener('click', () => updateModal(postTitle, postDescription, link, postId, state, instancei18n, elements));
+    // button.addEventListener('click', () => updateModal(postTitle, link, postDescription, id, state, instancei18n, elements));
     liOfPosts.appendChild(post);
   });
 };
 
+const renderSuccess = (elements) => {
+  elements.input.classList.remove('is-invalid');
+  elements.p.classList.remove('text-danger');
+  elements.p.classList.add('text-success');
+};
+const renderFail = (elements) => {
+  elements.input.classList.add('is-invalid');
+  elements.p.classList.remove('text-success');
+  elements.p.classList.add('text-danger');
+};
+const renderText = (elements, instancei18n, current) => {
+  elements.p.textContent = '';
+  elements.p.textContent = instancei18n.t(current);
+  elements.input.after(elements.p);
+};
+const disableButton = (elements) => {
+  elements.input.setAttribute('readonly', 'readonly');
+  elements.buttonAdd.setAttribute('disabled', 'disabled');
+};
+
+const ableButton = (elements) => {
+  elements.buttonAdd.removeAttribute('disabled');
+  elements.input.removeAttribute('readonly');
+};
+
 const watch = (state, instancei18n, elements) => {
   const watchedState = onChange(state, (path, current, previous) => {
-    if (path === 'form.errors') {
-      elements.p.textContent = '';
-      elements.p.textContent = current;
-      elements.input.after(elements.p);
+    if (path === 'form.error' && current !== null) {
+      renderText(elements, instancei18n, current);
     }
 
-    if (path === 'form.urls') {
+    if (path === 'feeds') {
       renderFeeds(current, previous, instancei18n, elements);
     }
     if (path === 'posts') {
-      renderPosts(current, previous, watchedState, instancei18n, elements);
+      renderPosts(current, previous, state, instancei18n, elements);
     }
-    if (path === 'form.status') {
-      if (current === 'invalid') {
-        elements.input.classList.add('is-invalid');
-        elements.p.classList.remove('text-success');
-        elements.p.classList.add('text-danger');
-        elements.buttonAdd.removeAttribute('disabled');
-        elements.input.removeAttribute('readonly');
-      }
-      if (current === 'valid') {
-        elements.input.classList.remove('is-invalid');
-        elements.p.classList.remove('text-danger');
-        elements.p.classList.add('text-success');
-        elements.input.removeAttribute('readonly');
-        elements.buttonAdd.removeAttribute('disabled');
-      }
-      if (current === 'loading') {
-        elements.input.setAttribute('readonly', 'readonly');
-        elements.buttonAdd.setAttribute('disabled', 'disabled');
-      }
-    }
-    if (path === 'postId') {
+    // if (path === 'form.status') {
+    //   if (current === 'invalid') {
+    //     renderFail(elements);
+    //   }
+    //   if (current === 'valid') {
+    //     renderSuccess(elements);
+    //   }
+    // }
+    if (path === 'viewedPosts') {
       current.forEach((item) => {
-        elements.linksContainer.querySelector(`li[id="${item}"] a`).classList.remove('fw-bold');
+        elements.linksContainer.querySelector(`li[id="${item}"] a`).classList.remove('font-weight-bold');
         elements.linksContainer.querySelector(`li[id="${item}"] a`).classList.add('font-weight-normal');
       });
+    }
+    if (path === 'loadingProcess.status') {
+      if (current === 'loading') {
+        disableButton(elements);
+        elements.input.classList.remove('is-invalid');
+        elements.p.classList.remove('text-danger');
+        elements.p.classList.remove('text-success');
+      }
+      if (current === 'filling') {
+        ableButton(elements);
+      }
+      if (current === 'success') {
+        renderSuccess(elements);
+        ableButton(elements);
+      }
+      if (current === 'fail') {
+        renderFail(elements);
+        ableButton(elements);
+      }
+    }
+    if (path === 'loadingProcess.error' && current !== null) {
+      renderText(elements, instancei18n, current);
+    }
+    if (path === 'modal.currentId') {
+      updateModal(current, state, instancei18n, elements);
     }
   });
   return watchedState;

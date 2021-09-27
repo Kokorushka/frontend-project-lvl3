@@ -5,6 +5,7 @@ export default () => {
     },
     mixed: {
       notOneOf: 'wasAddedBefore',
+      required: 'fillForm',
     },
   };
   return object;

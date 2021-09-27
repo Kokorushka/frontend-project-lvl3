@@ -1,17 +1,17 @@
 install:
-		npm install
+	npm install
 
 publish:
-		npm publish --dry-run
+	npm publish --dry-run
 
 lint:
-		npx eslint .
+	npx eslint .
 
 test:
-		npm test --watchAll
+	npm test --watchAll
 
 test-coverage:
-		npm test -- --coverage --coverageProvider=v8
+	npm test -- --coverage --coverageProvider=v8
 
 develop:
 	npx webpack serve

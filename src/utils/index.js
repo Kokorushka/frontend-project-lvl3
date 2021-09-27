@@ -1,4 +1,4 @@
 import parseXML from './parseXML.js';
-import getValidatedUrl from './getValidatdUrl.js';
+import validatedUrl from './validatdUrl.js';
 
-export { parseXML, getValidatedUrl };
+export { parseXML, validatedUrl };
