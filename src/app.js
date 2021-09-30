@@ -175,11 +175,11 @@ const app = () => {
         watchedState.modal.currentId = id;
         watchedState.viewedPosts.add(id);
       });
-        elements.buttonsClosingModal.forEach((button) => {
-          button.addEventListener('click', () => {
-            closeModal(elements);
-          });
+      elements.buttonsClosingModal.forEach((button) => {
+        button.addEventListener('click', () => {
+          closeModal(elements);
         });
+      });
     });
 };
 

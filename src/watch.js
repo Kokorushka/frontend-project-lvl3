@@ -82,7 +82,6 @@ const renderPosts = (current, previous, state, instancei18n, elements) => {
   current.forEach(({
     postTitle,
     link,
-    postDescription,
     channelId,
     id,
   }) => {
@@ -110,7 +109,6 @@ const renderPosts = (current, previous, state, instancei18n, elements) => {
     button.dataset.id = id;
     button.dataset.testid = 'preview';
     post.appendChild(button);
-    // button.addEventListener('click', () => updateModal(postTitle, link, postDescription, id, state, instancei18n, elements));
     liOfPosts.appendChild(post);
   });
 };
