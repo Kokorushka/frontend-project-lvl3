@@ -1,18 +1,18 @@
 import onChange from 'on-change';
-import _ from 'lodash';
+// import _ from 'lodash';
 
-const closeModal = (elements) => {
-  elements.modal.removeAttribute('id');
-  elements.modal.style = 'none';
-  elements.modal.querySelector('.modal-title').textContent = '';
-  elements.modal.querySelector('p').textContent = '';
-  elements.linkButton.removeAttribute('href');
-  elements.linkButton.textContent = '';
-  elements.modal.querySelector('button').textContent = '';
-  elements.modal.setAttribute('aria-hidden', 'true');
-  document.body.classList.remove('modal-open');
-  elements.modal.classList.remove('show');
-};
+// const closeModal = (elements) => {
+//   elements.modal.removeAttribute('id');
+//   elements.modal.style = 'none';
+//   elements.modal.querySelector('.modal-title').textContent = '';
+//   elements.modal.querySelector('p').textContent = '';
+//   elements.linkButton.removeAttribute('href');
+//   elements.linkButton.textContent = '';
+//   elements.modal.querySelector('button').textContent = '';
+//   elements.modal.setAttribute('aria-hidden', 'true');
+//   document.body.classList.remove('modal-open');
+//   elements.modal.classList.remove('show');
+// };
 const updateModal = (currentItem, state, instancei18n, elements) => {
   elements.modal.id = currentItem;
   const { posts } = state;
@@ -29,11 +29,11 @@ const updateModal = (currentItem, state, instancei18n, elements) => {
   elements.modal.classList.add('show');
   elements.modal.removeAttribute('aria-hidden');
   // state.viewedPosts.add(id);
-  elements.buttonsClosingModal.forEach((button) => {
-    button.addEventListener('click', () => {
-      closeModal(elements);
-    });
-  });
+  // elements.buttonsClosingModal.forEach((button) => {
+  //   button.addEventListener('click', () => {
+  //     closeModal(elements);
+  //   });
+  // });
 };
 
 const renderFeeds = (current, previous, instancei18n, elements) => {
@@ -94,7 +94,7 @@ const renderPosts = (current, previous, state, instancei18n, elements) => {
     if (viewedPosts.has(id)) {
       postLink.classList.add('font-weight-normal');
     } else {
-      postLink.classList.add('font-weight-bold');
+      postLink.classList.add('fw-bold');
     }
     postLink.setAttribute('target', '_blank');
     postLink.setAttribute('href', link);
@@ -162,7 +162,7 @@ const watch = (state, instancei18n, elements) => {
     // }
     if (path === 'viewedPosts') {
       current.forEach((item) => {
-        elements.linksContainer.querySelector(`li[id="${item}"] a`).classList.remove('font-weight-bold');
+        elements.linksContainer.querySelector(`li[id="${item}"] a`).classList.remove('fw-bold');
         elements.linksContainer.querySelector(`li[id="${item}"] a`).classList.add('font-weight-normal');
       });
     }

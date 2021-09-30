@@ -9,6 +9,7 @@ import {
 } from './utils';
 import yupLocale from './locales/yup.js';
 import ru from './locales/ru.js';
+import { target } from 'on-change';
 
 const proxy = 'https://hexlet-allorigins.herokuapp.com';
 const addProxy = (url) => {
@@ -17,6 +18,20 @@ const addProxy = (url) => {
   urlWithProxy.searchParams.set('disableCache', 'true');
   return urlWithProxy.toString();
 };
+
+const closeModal = (elements) => {
+  elements.modal.removeAttribute('id');
+  elements.modal.style = 'none';
+  elements.modal.querySelector('.modal-title').textContent = '';
+  elements.modal.querySelector('p').textContent = '';
+  elements.linkButton.removeAttribute('href');
+  elements.linkButton.textContent = '';
+  elements.modal.querySelector('button').textContent = '';
+  elements.modal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-open');
+  elements.modal.classList.remove('show');
+};
+
 const addIdToPosts = (posts, urlId) => posts
   .map((item) => ({ ...item, channelId: urlId, id: _.uniqueId() }));
 const loadRSS = (rss, watchedState) => {
@@ -59,8 +74,14 @@ const updatePosts = (watchedState, instancei18n) => {
     .then((resp) => {
       const xml = resp.data.contents;
       const { posts } = parseXML(xml);
-      const oldPosts = watchedState.posts;
-      const diff = _.differenceWith(posts, oldPosts, (a, b) => a.title === b.title);
+      const { posts: oldPosts } = watchedState;
+      const target = JSON.parse(JSON.stringify(oldPosts));
+      const diff = _.differenceWith(posts, target, (a, b) => a.title === b.title);
+      // // console.log(watchedState[posts]);
+      
+      // console.log(target);
+
+      // console.log(posts);
       // console.log(diff);
       const preparedPosts = addIdToPosts(diff, urlId);
       // console.log(preparedPosts);
@@ -163,6 +184,11 @@ const app = () => {
         watchedState.modal.currentId = id;
         watchedState.viewedPosts.add(id);
       });
+        elements.buttonsClosingModal.forEach((button) => {
+          button.addEventListener('click', () => {
+            closeModal(elements);
+          })
+        })
     });
 };
 
