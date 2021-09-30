@@ -9,7 +9,6 @@ import {
 } from './utils';
 import yupLocale from './locales/yup.js';
 import ru from './locales/ru.js';
-import { target } from 'on-change';
 
 const proxy = 'https://hexlet-allorigins.herokuapp.com';
 const addProxy = (url) => {
@@ -52,7 +51,6 @@ const loadRSS = (rss, watchedState) => {
           description,
         });
         const indexedPosts = addIdToPosts(posts, urlId);
-        // console.log(indexedPosts);
         watchedState.posts = [...watchedState.posts, ...indexedPosts];
         watchedState.loadingProcess.status = 'success';
         watchedState.loadingProcess.error = 'success';
@@ -77,14 +75,7 @@ const updatePosts = (watchedState, instancei18n) => {
       const { posts: oldPosts } = watchedState;
       const target = JSON.parse(JSON.stringify(oldPosts));
       const diff = _.differenceWith(posts, target, (a, b) => a.title === b.title);
-      // // console.log(watchedState[posts]);
-      
-      // console.log(target);
-
-      // console.log(posts);
-      // console.log(diff);
       const preparedPosts = addIdToPosts(diff, urlId);
-      // console.log(preparedPosts);
       watchedState.posts = [...preparedPosts, ...oldPosts];
     })
     .catch((e) => {
@@ -187,8 +178,8 @@ const app = () => {
         elements.buttonsClosingModal.forEach((button) => {
           button.addEventListener('click', () => {
             closeModal(elements);
-          })
-        })
+          });
+        });
     });
 };
 
